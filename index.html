@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+    <title>Base de Conhecimento</title>
+</head>
+<body>
+    <header>
+        <h1>Base de Conhecimento</h1>
+        <div class="search-wrapper">
+            <input type="text" id="campo-busca" oninput="mostrarSugestoes()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
+            <button id="botao-busca" onclick="realizarBusca()">Buscar</button>
+            <div id="sugestoes-container"></div>
+        </div>
+    </header>
+    <main>
+        <section class="card-container">
+            <!-- <article class="card">
+                <h2>Python</h2>
+                <p>1991</p>
+                <p>Python é uma linguagem de programação interpretada</p>
+                <a href="https://docs.python.org/3/">Saiba mais</a>
+            </article> -->
+        </section>
+
+        <section>
+            <h1>Entenda sobre tipos de execução:</h1>
+            <div class="curiosidades-container">
+                <div class="curiosidade-card">
+                    <h3>Compilada</h3>
+                    <p>O código-fonte é traduzido para código de máquina antes da execução, resultando em programas mais rápidos.</p>
+                </div>
+                <div class="curiosidade-card">
+                    <h3>Interpretada</h3>
+                    <p>O código é lido e executado linha por linha por um programa (interpretador) em tempo real.</p>
+                </div>
+                <div class="curiosidade-card">
+                    <h3>Interpretada (JIT)</h3>
+                    <p>Uma abordagem híbrida que compila partes do código durante a execução para otimizar a performance.</p>
+                </div>
+                <div class="curiosidade-card">
+                    <h3>Traduzida (Transpilada)</h3>
+                    <p>O código-fonte é convertido para outro código-fonte de nível similar, como TypeScript para JavaScript.</p>
+                </div>
+                <div class="curiosidade-card">
+                    <h3>Compilada para bytecode / IL</h3>
+                    <p>O código é compilado para um formato intermediário, que é executado por uma Máquina Virtual (VM).</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-location">
+            Brasil
+        </div>
+        <ul class="footer-links">
+            <!-- <h3>Linguagens de alto nivel</h3> -->
+            <li>
+                <a href="https://github.com/vlbmari">GitHub</a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/">LinkedIn</a>
+            </li>
+
+        </ul>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
