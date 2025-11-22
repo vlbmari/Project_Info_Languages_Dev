@@ -113,5 +113,66 @@ document.addEventListener('click', function(event) {
     }
 });
 
+// --- Lógica do Modal de Tipos de Execução ---
+
+const detalhesExecucao = {
+    "Compilada": {
+        vantagem: "<strong>Vantagem:</strong> Performance máxima, pois o código já está na linguagem da máquina.",
+        desvantagem: "<strong>Desvantagem:</strong> Menos portável. O programa só roda no sistema para o qual foi compilado."
+    },
+    "Interpretada": {
+        vantagem: "<strong>Vantagem:</strong> Altamente portável (roda em qualquer sistema com o interpretador) e desenvolvimento ágil.",
+        desvantagem: "<strong>Desvantagem:</strong> Performance inferior à do código compilado."
+    },
+    "Interpretada (JIT)": {
+        vantagem: "<strong>Vantagem:</strong> Ótimo equilíbrio entre a flexibilidade da interpretação e a velocidade da compilação.",
+        desvantagem: "<strong>Desvantagem:</strong> Pode ter um 'aquecimento' inicial (warm-up) mais lento enquanto otimiza o código."
+    },
+    "Traduzida (Transpilada)": {
+        vantagem: "<strong>Vantagem:</strong> Permite usar recursos de linguagens modernas em plataformas que não as suportam nativamente.",
+        desvantagem: "<strong>Desvantagem:</strong> Adiciona um passo extra de compilação ao desenvolvimento e pode complicar a depuração."
+    },
+    "Compilada para bytecode": {
+        vantagem: "<strong>Vantagem:</strong> Excelente portabilidade ('escreva uma vez, rode em qualquer lugar' com a JVM).",
+        desvantagem: "<strong>Desvantagem:</strong> Exige que a Máquina Virtual Java (JVM) esteja instalada no sistema."
+    },
+    "Compilada para IL": {
+        vantagem: "<strong>Vantagem:</strong> Portabilidade entre sistemas (com o .NET Core/5+) e interoperabilidade entre linguagens .NET.",
+        desvantagem: "<strong>Desvantagem:</strong> Exige que o Common Language Runtime (CLR) esteja instalado no sistema."
+    }
+};
+
+const modalOverlay = document.getElementById('modal-overlay');
+const modalTitle = document.getElementById('modal-title');
+const modalAdvantage = document.getElementById('modal-advantage');
+const modalDisadvantage = document.getElementById('modal-disadvantage');
+const modalCloseBtn = document.getElementById('modal-close');
+
+document.querySelectorAll('.details-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const tipo = button.getAttribute('data-tipo');
+        const detalhes = detalhesExecucao[tipo];
+
+        if (detalhes) {
+            modalTitle.textContent = tipo;
+            modalAdvantage.innerHTML = detalhes.vantagem;
+            modalDisadvantage.innerHTML = detalhes.desvantagem;
+            modalOverlay.style.display = 'flex';
+        }
+    });
+});
+
+function fecharModal() {
+    modalOverlay.style.display = 'none';
+}
+
+modalCloseBtn.addEventListener('click', fecharModal);
+modalOverlay.addEventListener('click', (event) => {
+    // Fecha o modal apenas se o clique for no overlay, não no conteúdo
+    if (event.target === modalOverlay) {
+        fecharModal();
+    }
+});
+
 // Inicia o carregamento dos dados assim que o script é lido
 inicializar();

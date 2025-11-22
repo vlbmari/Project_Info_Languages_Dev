@@ -2,7 +2,7 @@
 {
     "nome": "Python",
     "ano": 1991,
-    "descricao": "Linguagem de Nível alto, conhecida por sua sintaxe clara e legível. Usada em desenvolvimento web, ciência de dados e automação.",
+    "descricao": "Famosa por sua filosofia de simplicidade e legibilidade, é a porta de entrada para muitos programadores e uma potência em IA e análise de dados.",
     "curiosidade": "Seu nome não é uma referência à cobra, mas sim ao grupo de comédia britânico Monty Python's Flying Circus.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     "tags": ["Ciência de Dados", "Web", "Automação", "IA"],
@@ -13,7 +13,7 @@
 {
     "nome": "JavaScript",
     "ano": 1995,
-    "descricao": "Linguagem essencial para o desenvolvimento web, permitindo a criação de páginas interativas. Roda no navegador e no servidor (Node.js).",
+    "descricao": "A linguagem onipresente da web, responsável por dar vida e interatividade a virtualmente todos os sites. Roda em qualquer lugar, do navegador ao servidor.",
     "curiosidade": "Foi criada por Brendan Eich em apenas 10 dias enquanto trabalhava na Netscape.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     "tags": ["Web", "Mobile", "Desktop"],
@@ -24,7 +24,7 @@
 {
     "nome": "Java",
     "ano": 1995,
-    "descricao": "Linguagem multiplataforma ('escreva uma vez, rode em qualquer lugar'), popular em aplicações corporativas, Android e sistemas de larga escala.",
+    "descricao": "Construída sobre o lema 'escreva uma vez, rode em qualquer lugar', sua robustez e portabilidade a tornaram a espinha dorsal de sistemas corporativos globais.",
     "curiosidade": "Seu nome original era 'Oak' (Carvalho), inspirado em uma árvore que ficava do lado de fora da janela de seu criador, James Gosling.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
     "tags": ["Corporativo", "Mobile (Android)", "Web"],
@@ -35,7 +35,7 @@
 {
     "nome": "C#",
     "ano": 2000,
-    "descricao": "Linguagem moderna da Microsoft para o ecossistema .NET. Usada para aplicações Windows, web e desenvolvimento de jogos com Unity.",
+    "descricao": "A resposta moderna da Microsoft para o desenvolvimento robusto. É a força motriz por trás do ecossistema .NET e a linguagem preferida para jogos com Unity.",
     "curiosidade": "O nome original era 'Cool' (C-like Object Oriented Language), mas foi alterado por questões de marca registrada.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
     "tags": ["Jogos (Unity)", "Web (.NET)", "Desktop"],
@@ -46,7 +46,7 @@
 {
     "nome": "C++",
     "ano": 1985,
-    "descricao": "Extensão da linguagem C, focada em performance. Usada em softwares de sistema, jogos de alta performance e aplicações de tempo real.",
+    "descricao": "Uma evolução do C que oferece controle de hardware de baixo nível com abstrações de alto nível. É a escolha definitiva para aplicações onde cada nanossegundo conta.",
     "curiosidade": "O '++' no nome é uma referência ao operador de incremento da linguagem C, indicando que é uma 'evolução' do C.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
     "tags": ["Jogos (Motores)", "Sistemas", "Performance"],
@@ -57,7 +57,7 @@
 {
     "nome": "TypeScript",
     "ano": 2012,
-    "descricao": "Superconjunto de JavaScript que adiciona tipagem estática opcional, melhorando a manutenibilidade de grandes projetos.",
+    "descricao": "Um superconjunto de JavaScript que traz ordem ao caos, adicionando um sistema de tipos robusto para construir aplicações complexas com mais segurança e escalabilidade.",
     "curiosidade": "Seu principal arquiteto, Anders Hejlsberg, também foi o criador original da linguagem C# e do Delphi.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
     "tags": ["Web", "Grandes Projetos"],
@@ -68,7 +68,7 @@
 {
     "nome": "PHP",
     "ano": 1995,
-    "descricao": "Linguagem de script do lado do servidor, amplamente utilizada para desenvolvimento web e base de sistemas como WordPress e Drupal.",
+    "descricao": "A linguagem que democratizou a web dinâmica. Simples e pragmática, ela alimenta uma vasta porção da internet, incluindo gigantes como o WordPress.",
     "curiosidade": "Originalmente significava 'Personal Home Page'. Hoje, é um acrônimo recursivo para 'PHP: Hypertext Preprocessor'.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
     "tags": ["Web (Backend)", "CMS"],
@@ -79,7 +79,7 @@
 {
     "nome": "Go",
     "ano": 2009,
-    "descricao": "Linguagem compilada do Google, focada em simplicidade e eficiência para programação concorrente e serviços de backend.",
+    "descricao": "Projetada pelo Google para a era da nuvem, sua principal força é a simplicidade e o suporte nativo à concorrência, ideal para microserviços eficientes.",
     "curiosidade": "Foi criada por engenheiros do Google, incluindo Ken Thompson e Rob Pike, que também foram figuras centrais na criação do sistema operacional Unix e da linguagem C.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg",
     "tags": ["Cloud", "Backend", "Concorrência"],
@@ -90,7 +90,7 @@
 {
     "nome": "C",
     "ano": 1972,
-    "descricao": "Uma das linguagens mais influentes, base para muitas outras. Usada em sistemas operacionais, software embarcado e aplicações que exigem performance.",
+    "descricao": "A 'mãe' de muitas linguagens modernas. Oferece poder e controle quase absolutos sobre o hardware, sendo a base de sistemas operacionais e software embarcado.",
     "curiosidade": "É a 'mãe' de muitas linguagens modernas, como C++, C#, Java e Objective-C, e foi usada para escrever a maior parte do sistema operacional Unix.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
     "tags": ["Sistemas Operacionais", "Embarcados"],
@@ -101,7 +101,7 @@
 {
     "nome": "Rust",
     "ano": 2010,
-    "descricao": "Linguagem de sistemas focada em segurança de memória e concorrência. Usada para software de sistema, performance crítica e segurança.",
+    "descricao": "Obcecada por segurança e performance. Garante segurança de memória sem um coletor de lixo, tornando-a ideal para sistemas onde falhas não são uma opção.",
     "curiosidade": "A comunidade Rust tem um mascote não oficial, um caranguejo amigável chamado Ferris.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg",
     "tags": ["Sistemas", "Segurança", "WebAssembly"],
@@ -112,7 +112,7 @@
 {
     "nome": "Swift",
     "ano": 2014,
-    "descricao": "Linguagem da Apple para desenvolvimento de apps para iOS, macOS e outros. Focada em segurança, performance e sintaxe moderna.",
+    "descricao": "A linguagem moderna, segura e expressiva da Apple. Projetada do zero para criar experiências ricas e fluidas em todo o ecossistema da maçã.",
     "curiosidade": "Foi desenvolvida em segredo pela Apple por 4 anos antes de ser anunciada ao público na WWDC 2014.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg",
     "tags": ["Mobile (iOS)", "Desktop (macOS)"],
@@ -123,7 +123,7 @@
 {
     "nome": "Assembly (ASM)",
     "ano": 1949,
-    "descricao": "Família de linguagens com correspondência direta com as instruções de máquina. Usada para otimização extrema e interação com o hardware.",
+    "descricao": "A forma mais pura de comunicação com o processador. Não é uma linguagem, mas uma representação legível do código de máquina, usada para controle e otimização extremos.",
     "curiosidade": "Não é uma única linguagem, mas um grupo de linguagens. Cada arquitetura de processador (como x86 ou ARM) tem seu próprio Assembly.",
     "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Assembly_icon.svg/2048px-Assembly_icon.svg.png",
     "tags": ["Hardware", "Otimização", "Drivers"],
@@ -134,7 +134,7 @@
 {
     "nome": "Fortran",
     "ano": 1957,
-    "descricao": "Uma das primeiras linguagens de Nível alto, projetada para computação numérica e científica. Ainda usada em computação de alta performance.",
+    "descricao": "A pioneira da computação científica. Nascida para traduzir fórmulas matemáticas em código, continua sendo uma ferramenta vital em supercomputadores e análises numéricas.",
     "curiosidade": "O nome é uma contração de 'Formula Translation'. É considerada a primeira linguagem de programação de alto nível a ser amplamente utilizada.",
     "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Fortran_logo.svg/1200px-Fortran_logo.svg.png",
     "tags": ["Científico", "Computação Numérica"],
@@ -145,7 +145,7 @@
 {
     "nome": "COBOL",
     "ano": 1959,
-    "descricao": "Projetada para processamento de negócios, finanças e sistemas administrativos. Fundamental em mainframes e sistemas legados.",
+    "descricao": "A linguagem dos negócios. Projetada para ser legível como o inglês, ela processa silenciosamente trilhões de dólares em transações diárias em sistemas financeiros globais.",
     "curiosidade": "Estima-se que mais de 220 bilhões de linhas de código COBOL ainda estejam em uso hoje, principalmente em sistemas bancários e governamentais.",
     "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cobol-logo.svg/1280px-Cobol-logo.svg.png",
     "tags": ["Financeiro", "Mainframe", "Sistemas Legados"],

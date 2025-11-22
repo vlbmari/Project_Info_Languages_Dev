@@ -448,21 +448,26 @@ article a:hover::after {
 
 /* --- Estilos da Seção de Curiosidades --- */
 .curiosidades-container {
-    display: flex; /* Habilita o layout flexbox */
-    flex-wrap: wrap; /* Permite que os cards quebrem para a próxima linha */
-    gap: 1rem; /* Espaçamento entre os cards */
-    justify-content: center; /* Centraliza os cards no container */
-    margin-top: 1rem; /* Margem no topo */
+    /* Novo layout em grade para as definições */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
 .curiosidade-card {
-    background-color: #292a2d; /* Um tom ligeiramente mais claro que o fundo */
-    border: 1px solid var(--quinary-color); /* Borda com a cor terciária */
-    border-radius: 0.5rem; /* Bordas arredondadas */
-    padding: 1rem; /* Espaçamento interno */
-    flex-basis: 220px; /* Largura base de cada card */
-    flex-grow: 1; /* Permite que o card cresça para ocupar espaço disponível */
-    text-align: center; /* Centraliza o texto */
+    /* Estilo de "definição" com borda à esquerda */
+    background-color: rgba(41, 42, 45, 0.5); /* Fundo sutil */
+    border-left: 4px solid;
+    border-image: linear-gradient(to bottom, var(--primary-color), var(--quaternary-color)) 1;
+    padding: 1.5rem;
+    border-radius: 0 0.5rem 0.5rem 0; /* Bordas arredondadas, exceto na esquerda */
+    text-align: left; /* Alinhamento à esquerda para melhor leitura */
+    transition: background-color 0.3s ease;
+}
+
+.curiosidade-card:hover {
+    background-color: rgba(50, 52, 55, 0.8); /* Ilumina sutilmente no hover */
 }
 
 .curiosidade-card h3 {
@@ -482,4 +487,71 @@ main > section > h2 {
     color: var(--quinary-color); /* Cor do texto (cinza claro/branco) */
     text-align: center; /* Centraliza o texto */
     margin-top: 4rem; /* Margem superior para separar das linguagens */
+}
+
+/* --- Estilos do Botão de Detalhes --- */
+.details-btn {
+    background-color: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.details-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+}
+
+/* --- Estilos do Modal --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none; /* Inicialmente escondido */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: #292a2d;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(154, 160, 166, 0.2);
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.modal-content p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 2rem;
+    cursor: pointer;
 }
