@@ -39,39 +39,37 @@ function selecionarSugestao(nome) {
 
 function realizarBusca() {
     // Pega o termo de busca do input e converte para minúsculas
-    const termoBusca = document.getElementById("campo-busca").value.toLowerCase();
-    document.getElementById("sugestoes-container").innerHTML = ""; // Garante que as sugestões sumam
+    const campoBusca = document.getElementById("campo-busca");
+    const termoBusca = campoBusca.value.toLowerCase();
+    
+    // Só limpa as sugestões se o campo de busca não estiver focado (ou seja, após um clique no botão ou seleção)
+    if (document.activeElement !== campoBusca) {
+        document.getElementById("sugestoes-container").innerHTML = ""; // Garante que as sugestões sumam
+    }
 
     // Filtra os dados com base no termo de busca
     const dadosFiltrados = dados.filter(dado => {
-        // Retorna true se o termo de busca estiver em qualquer um dos campos
-        return dado.nome.toLowerCase().startsWith(termoBusca) ||
-               dado.descricao.toLowerCase().startsWith(termoBusca) ||
-               dado.curiosidade.toLowerCase().startsWith(termoBusca) ||
-               dado.tags.some(tag => tag.toLowerCase().startsWith(termoBusca));
+        // Retorna true se o nome da linguagem começar com o termo de busca.
+        // Isso torna a filtragem dos cards mais precisa e intuitiva.
+        return dado.nome.toLowerCase().startsWith(termoBusca);
     });
 
     renderizarCards(dadosFiltrados);
 }
 
+// Nova função para lidar com a entrada do usuário em tempo real
+function handleSearchInput() {
+    mostrarSugestoes();
+    realizarBusca();
+}
+
 function renderizarCards(dados){
     cardContainer.innerHTML = ""; // Limpa os cards existentes antes de renderizar novos
 
-    // Define a ordem desejada para os níveis
-    const nivelOrdem = {
-        "Nível alto": 1,
-        "Nível intermediário": 2,
-        "Nível baixo": 3
-    };
+    // Ordena o array 'dados' em ordem alfabética pelo nome
+    dados.sort((a, b) => a.nome.localeCompare(b.nome));
 
-    // Ordena o array 'dados' com base na ordem definida
-    dados.sort((a, b) => {
-        const ordemA = nivelOrdem[a.nivel] || 99; // Usa 99 como padrão se o nível não for encontrado
-        const ordemB = nivelOrdem[b.nivel] || 99;
-        return ordemA - ordemB;
-    });
-
-    for (let dado of dados) {
+    dados.forEach((dado, index) => {
         let nivelColor = '';
         switch (dado.nivel) {
             case "Nível alto":
@@ -90,20 +88,21 @@ function renderizarCards(dados){
 
         let article = document.createElement("article");
         article.classList.add("card");
+        // Adiciona um atraso escalonado para a animação de entrada
+        article.style.animationDelay = `${index * 0.05}s`;
         article.innerHTML = ` 
         <img class="card-logo" src="${dado.logo_url}" alt="Logo ${dado.nome}">
         <h2>${dado.nome}</h2>
         <p><strong>${dado.ano}</strong></p>
         <div class="tags-container">${tagsHtml}</div>
         <p>${dado.descricao}</p>
-        <p class="curiosidade"><strong>Curiosidade:</strong> ${dado.curiosidade}</p>
+        <p class="curiosidade"><strong>Curiosidade:</strong> ${dado.curiosidade}</p> 
         <p><strong>Execução: ${dado.tipo_execucao}</strong></p>
         <p>Nível: <strong style="color: ${nivelColor};">${dado.nivel}</strong></p>
-        <a href="${dado.link}" target="_blank">Saiba mais</a> 
+        <a href="${dado.link}" target="_blank" rel="noopener noreferrer">Saiba mais</a> 
         `
         cardContainer.appendChild(article);
-            
-    }
+    });
 }
 
 // Fecha as sugestões se o usuário clicar fora

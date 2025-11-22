@@ -153,27 +153,32 @@ main {
 }
 
 article {
-    background: none; /* Sem cor de fundo */
-    border-radius: 0; /* Sem bordas arredondadas */
-    padding: 0; /* Remove o padding */
-    padding: 0 1rem; /* Espaçamento interno nos lados */
+    /* Efeito Glassmorphism */
+    background: rgba(41, 42, 45, 0.6); /* Fundo semitransparente */
+    backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
+    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
+    border-radius: 0.75rem; /* Bordas arredondadas */
+    padding: 1.5rem; /* Espaçamento interno */
     margin-bottom: 1.25rem; /* Margem inferior */
-    box-shadow: none; /* Sem sombra */
-    transition: background-color 0.3s ease, border-bottom-color 0.3s ease; /* Transição suave */
-    border-bottom: 1px solid var(--bg-color); /* Borda inferior */
-    padding-bottom: 1.5rem; /* Espaçamento interno inferior */
+    border: 1px solid rgba(154, 160, 166, 0.2); /* Borda sutil */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+
+    /* Animação de entrada */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.5s forwards ease-out;
 }
 
 article:hover {
-    transform: scale(1.01); /* Aumenta ligeiramente o tamanho ao passar o mouse */
+    /* Efeito de "flutuação" aprimorado */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(138, 180, 248, 0.15);
     cursor: pointer; /* Muda o cursor para uma mão */
 }
 
 article h2 {
     font-weight: 600; /* Peso da fonte */
     font-size: 1.6rem; /* Tamanho da fonte */
-    border-bottom: none; /* Sem borda inferior */
-    padding-bottom: 0; /* Sem espaçamento interno inferior */
     margin-bottom: 0.25rem; /* Margem inferior */
     color: var(--primary-color); /* Cor do texto */
 }
@@ -322,6 +327,15 @@ article a:hover {
     }
 }
 
+/* --- Animações --- */
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
 /* --- Estilos da Seção de Curiosidades --- */
 .curiosidades-container {
     display: flex; /* Habilita o layout flexbox */
@@ -352,7 +366,7 @@ article a:hover {
 }
 
 /* --- Estilos do Título da Seção --- */
-main > section > h1 {
+main > section > h2 {
     font-size: 2rem; /* Tamanho da fonte para o título da seção */
     font-weight: 500; /* Peso da fonte */
     color: var(--quinary-color); /* Cor do texto (cinza claro/branco) */

@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <!-- SEO & Meta Tags Essenciais -->
+    <meta name="description" content="Uma base de conhecimento interativa sobre as principais linguagens de programação, suas características, história e curiosidades.">
+    <meta name="author" content="Seu Nome ou Nome do Projeto">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Base de Conhecimento de Linguagens">
+    <meta property="og:description" content="Explore e descubra informações sobre diversas linguagens de programação.">
     <style>
         body {
             overflow-x: hidden;
@@ -14,8 +21,8 @@
 <body>
     <header>
         <h1>Base de Conhecimento</h1>
-        <div class="search-wrapper">
-            <input type="text" id="campo-busca" oninput="mostrarSugestoes()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
+        <div class="search-wrapper" role="search">
+            <input type="text" id="campo-busca" oninput="handleSearchInput()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
             <button id="botao-busca" onclick="realizarBusca()">Buscar</button>
             <div id="sugestoes-container"></div>
         </div>
@@ -31,7 +38,7 @@
         </section>
 
         <section>
-            <h1>Entenda sobre tipos de execução:</h1>
+            <h2>Entenda sobre tipos de execução:</h2>
             <div class="curiosidades-container">
                 <div class="curiosidade-card">
                     <h3>Compilada</h3>
