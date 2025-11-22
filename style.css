@@ -37,7 +37,8 @@ html {
     --quinary-color: #d2fc83b9; /* Cor quinária (verde-limão) */
     --seventh-color: #ffaf69; /* Laranja pastel */
     --sixth-gradient: linear-gradient(to right, var(--quaternary-color), var(--quinary-color)); /* Gradiente da 4ª para a 5ª cor */
-    --bg-color: #202124; /* Cor de fundo (cinza escuro) */
+    --bg-color: #222024; /* Cor de fundo (cinza escuro) */
+    --bg-color-two: #8ab4f844;
 }
 
 
@@ -165,7 +166,7 @@ div input:focus {
     font-size: 1rem; /* Tamanho da fonte */
     white-space: nowrap; /* Impede a quebra de linha do texto */
     transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
-    background-color: var(--bg-color); /* Cor de fundo */
+    background-color: var(--bg-color-two); /* Cor de fundo */
     color: var(--secondary-color); /* Cor do texto */
     border: 1px solid var(--bg-color); /* Adiciona uma borda */
 }
