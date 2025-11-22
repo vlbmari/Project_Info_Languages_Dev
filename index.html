@@ -4,19 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <!-- SEO & Meta Tags Essenciais -->
     <meta name="description" content="Uma base de conhecimento interativa sobre as principais linguagens de programação, suas características, história e curiosidades.">
     <meta name="author" content="Seu Nome ou Nome do Projeto">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Base de Conhecimento de Linguagens">
+    <meta property="og:title" content="Guia Dev de Linguagens">
     <meta property="og:description" content="Explore e descubra informações sobre diversas linguagens de programação.">
-    <style>
-        body {
-            overflow-x: hidden;
-        }
-    </style>
-    <title>Base de Conhecimento</title>
+    <title>Guia Dev</title>
 </head>
 <body>
     <!-- Camadas de estrelas para o fundo animado -->
@@ -26,12 +24,12 @@
 
     <header>
         <div class="header-content-left">
-            <h1>Base de Conhecimento</h1>
-            <div class="search-wrapper" role="search">
-                <input type="text" id="campo-busca" oninput="handleSearchInput()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
-                <button id="botao-busca" onclick="realizarBusca()">Buscar</button>
-                <div id="sugestoes-container"></div>
-            </div>
+            <h1 id="main-title">Guia Dev</h1>
+        </div>
+        <div class="search-wrapper" role="search">
+            <input type="text" id="campo-busca" oninput="handleSearchInput()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
+            <button id="botao-busca" onclick="realizarBusca()">Buscar</button>
+            <div id="sugestoes-container"></div>
         </div>
         <nav class="header-nav-right">
             <a href="#tipos-execucao">Tipos de Execução</a>
@@ -39,17 +37,19 @@
     </header>
 
     <main>
-        <section class="card-container">
-            <!-- <article class="card">
-                <h2>Python</h2>
-                <p>1991</p>
-                <p>Python é uma linguagem de programação interpretada</p>
-                <a href="https://docs.python.org/3/">Saiba mais</a>
-            </article> -->
-        </section>
-
         <section>
-            <h2 id="tipos-execucao">Entenda sobre tipos de execução:</h2>
+             <h2 id="linguagens" class="styleH2">Linguagens de programação</h2>
+            <div  class="card-container">
+                <!-- <article class="card">
+                    <h2>Python</h2>
+                    <p>1991</p>
+                    <p>Python é uma linguagem de programação interpretada</p>
+                    <a href="https://docs.python.org/3/">Saiba mais</a>
+                </article> -->
+            </div>
+        </section>
+        <section>
+            <h2 id="tipos-execucao" class="styleH2">Entenda sobre tipos de execução:</h2>
             <div class="curiosidades-container">
                 <div class="curiosidade-card">
                     <h3>Compilada</h3>
@@ -80,6 +80,26 @@
                     <h3>Compilada para IL</h3>
                     <p>O código é compilado para a "Intermediate Language", formato universal do ecossistema .NET.</p>
                     <button class="details-btn" data-tipo="Compilada para IL">Ver Detalhes</button>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2 id="niveis-linguagens" class="styleH2">Entenda sobre Niveis de linguagens:</h2>
+            <div class="curiosidades-container">
+                <div class="curiosidade-card nivel-alto">
+                    <h3>Nível Alto</h3>
+                    <p>Mais próximas da linguagem humana, fáceis de aprender e usar, com forte abstração do hardware.</p>
+                    <button class="details-btn" data-nivel="Nível alto">Ver Detalhes</button>
+                </div>
+                <div class="curiosidade-card nivel-intermediario">
+                    <h3>Nível Intermediário</h3>
+                    <p>Uma ponte entre o alto e o baixo nível, permitindo manipulação de memória e acesso ao hardware.</p>
+                    <button class="details-btn" data-nivel="Nível intermediário">Ver Detalhes</button>
+                </div>
+                <div class="curiosidade-card nivel-baixo">
+                    <h3>Nível Baixo</h3>
+                    <p>Muito próximas da linguagem da máquina, oferecendo controle máximo sobre o hardware, mas com alta complexidade.</p>
+                    <button class="details-btn" data-nivel="Nível baixo">Ver Detalhes</button>
                 </div>
             </div>
         </section>

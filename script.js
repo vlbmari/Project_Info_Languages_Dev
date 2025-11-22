@@ -174,5 +174,54 @@ modalOverlay.addEventListener('click', (event) => {
     }
 });
 
+// --- Animação do Título Principal ---
+function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColorClass = 'scrambling') {
+    const titleElement = document.querySelector(selector);
+    if (!titleElement) return;
+
+    // Pega o contêiner pai do título para fixar sua largura
+    const titleContainer = titleElement.parentElement;
+    if (titleContainer) {
+        titleContainer.style.width = `${titleContainer.getBoundingClientRect().width}px`;
+    }
+
+    const originalText = titleElement.textContent;
+    titleElement.innerHTML = ''; // Limpa o conteúdo para usar spans
+
+    // Cria um span para cada caractere
+    originalText.split('').forEach(char => {
+        const span = document.createElement('span');
+        span.textContent = char === ' ' ? '\u00A0' : char; // Usa non-breaking space para espaços
+        span.classList.add('binary-char');
+        titleElement.appendChild(span);
+    });
+
+    const spans = titleElement.querySelectorAll('.binary-char');
+    let iterations = 0;
+
+    const interval = setInterval(() => {
+        spans.forEach((span, index) => {
+            if (index < iterations) {
+                span.textContent = originalText[index] === ' ' ? '\u00A0' : originalText[index];
+                span.classList.add(finalColorClass);
+                span.classList.remove(scrambleColorClass);
+            } else {
+                // Gera um caractere binário aleatório (0 ou 1)
+                span.textContent = Math.random() < 0.5 ? '0' : '1';
+                span.classList.add(scrambleColorClass);
+                span.classList.remove(finalColorClass);
+            }
+        });
+
+        if (iterations >= originalText.length) {
+            clearInterval(interval);
+        }
+
+        iterations += 1 / 3; // Controla a velocidade da "revelação"
+    }, 50); // Controla a velocidade da animação geral
+}
+
 // Inicia o carregamento dos dados assim que o script é lido
 inicializar();
+// Inicia a animação do título
+animateTitleBinary('#main-title');

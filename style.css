@@ -87,10 +87,35 @@ header::after {
 }
 
 header h1 {
-    font-size: 1.5rem; /* Tamanho da fonte ajustado */
-    font-weight: 500; /* Peso da fonte (médio) */
+    font-size: 2.8rem; /* Tamanho da fonte aumentado para mais impacto */
+    font-weight: 700; /* Peso da fonte (negrito) */
+    font-family: 'Orbitron', sans-serif; /* Nova fonte futurista */
     white-space: nowrap; /* Impede a quebra de linha do texto */
-    color: var(--secondary-color);
+
+    /* Efeito de gradiente no texto */
+    background: linear-gradient(90deg, var(--primary-color), var(--quinary-color), var(--quaternary-color));
+    background-clip: text;
+    -webkit-background-clip: text; /* Para compatibilidade com navegadores Webkit */
+    -webkit-text-fill-color: transparent; /* Torna o texto transparente para mostrar o gradiente */
+    background-size: 200% auto; /* Tamanho do fundo para a animação */
+}
+
+/* Estilos para os caracteres da animação binária */
+.binary-char {
+    display: inline-block;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Cor para os '0's e '1's da animação */
+.binary-char.scrambling {
+    -webkit-text-fill-color: #666; /* Cor sólida cinza para os caracteres binários */
+}
+
+/* Cor para o texto final revelado */
+.binary-char.revealed {
+    /* A cor do texto já é transparente por herança, revelando o gradiente do h1. */
+    /* Mantemos apenas o brilho, usando uma cor neutra para não interferir no gradiente. */
+    text-shadow: 0 0 8px rgba(232, 234, 237, 0.3);
 }
 
 .header-content-left {
@@ -211,8 +236,8 @@ main {
 /* --- Layout do Grid de Cards --- */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Largura mínima reduzida */
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Largura mínima reduzida */
+    gap: 2.5rem;
 }
 
 article {
@@ -510,12 +535,34 @@ article a:hover::after {
 }
 
 /* --- Estilos do Título da Seção --- */
-main > section > h2 {
-    font-size: 2rem; /* Tamanho da fonte para o título da seção */
-    font-weight: 500; /* Peso da fonte */
-    color: var(--quinary-color); /* Cor do texto (cinza claro/branco) */
-    text-align: center; /* Centraliza o texto */
-    margin-top: 4rem; /* Margem superior para separar das linguagens */
+.styleH2{
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    
+    /* Propriedades para o efeito de gradiente no texto */
+    /* A propriedade 'background' agora usa uma variável '--title-gradient' */
+    /* que será definida em cada ID específico. */
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 2rem;
+    margin-top: 4rem; /* Mantém o espaçamento superior */
+}
+
+#linguagens {
+    /* Define a variável de gradiente para este título específico */
+    --title-gradient: linear-gradient(90deg, #006fcf, #93faff, #006fcf);
+}
+#tipos-execucao {
+    /* Define a variável de gradiente para este título específico */
+    --title-gradient: linear-gradient(90deg, #02ac3a, #a0fdac, #02ac3a);
+}
+
+#niveis-linguagens {
+    /* Define a variável de gradiente para este título específico */
+    --title-gradient: linear-gradient(90deg, #e204c5, #fabeed, #e204c5);
 }
 
 /* --- Estilos do Botão de Detalhes --- */
@@ -535,6 +582,39 @@ main > section > h2 {
 .details-btn:hover {
     background-color: var(--primary-color);
     color: var(--bg-color);
+}
+
+/* --- Estilos dos Cards de Nível de Linguagem --- */
+.nivel-alto, .nivel-intermediario, .nivel-baixo {
+    /* Remove a borda de imagem e a borda esquerda do estilo .curiosidade-card */
+    border-image: none;
+    border-left: none;
+    
+    /* Define um fundo ligeiramente diferente para destacá-los */
+    background-color: rgba(35, 36, 39, 0.6);
+
+    /* Adiciona uma borda pontilhada em toda a volta */
+    border-width: 2px;
+    border-style: dotted;
+
+    /* Garante transições suaves para todas as propriedades alteradas */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-style 0.3s ease;
+}
+
+.nivel-alto {
+    border-color: var(--quinary-color); /* Verde-limão */
+}
+.nivel-intermediario {
+    border-color: var(--seventh-color); /* Laranja */
+}
+.nivel-baixo {
+    border-color: var(--quaternary-color); /* Magenta */
+}
+
+.nivel-alto:hover, .nivel-intermediario:hover, .nivel-baixo:hover {
+    transform: translateY(-5px);
+    border-style: solid; /* A borda se torna sólida no hover */
+    box-shadow: 0 0 20px rgba(var(--shadow-rgb), 0.25); /* Brilho correspondente à cor */
 }
 
 /* --- Estilos do Modal --- */
