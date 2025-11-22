@@ -37,33 +37,55 @@ summary, time, mark, audio, video {
 
 
 body {
-    /* Efeito de "spotlight" sutil para um visual mais tech */
-    background-color: var(--bg-color);
-    background-image: radial-gradient(circle at center, rgba(138, 180, 248, 0.05), transparent 40%);
+    /* Fundo "Tech Grid" animado com tons de azul e roxo */
+    background-color: #0c0a17; /* Um roxo bem escuro como base */
+    background-image:
+        /* Camada de pontos */
+        radial-gradient(circle at 1px 1px, rgba(138, 180, 248, 0.5) 1px, transparent 0),
+        /* Camada de fundo gradiente */
+        radial-gradient(ellipse at bottom, #1b2735, #0c0a17 80%);
+    background-size: 20px 20px, 100% 100%;
+    /* A animação move a primeira camada (pontos), a segunda (gradiente) fica parada */
+    animation: move-grid 120s linear infinite;
+    background-attachment: fixed; /* Fixa o background, evitando repetição na rolagem */
+    height: 100vh;
+    overflow-y: auto;
     color: var(--secondary-color); /* Define a cor do texto padrão usando uma variável */
     font-family: "Quicksand", sans-serif; /* Define a família da fonte */
 }
 
 header {
-    padding: 2rem 1rem; /* Espaçamento interno (2rem em cima/baixo, 1rem nos lados) */
+    position: relative; /* Necessário para o pseudo-elemento da borda */
+    padding: 1.5rem 1rem; /* Espaçamento interno ajustado para ser menos afastado */
     display: flex; /* Habilita o layout flexbox */
     align-items: center; /* Alinha os itens verticalmente ao centro */
-    justify-content: space-around; /* Distribui os itens com espaço ao redor */
+    justify-content: space-between; /* Título à esquerda, busca à direita */
     position: sticky; /* Mantém o cabeçalho fixo no topo ao rolar a página */
     top: 0; /* Posição do topo quando sticky */
-    /* Efeito Glassmorphism para o header */
-    background: rgba(32, 33, 36, 0.75);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* Efeito Glassmorphism mais nítido */
+    background: rgba(32, 33, 36, 0.85); /* Fundo mais opaco */
+    backdrop-filter: blur(8px); /* Desfoque mais sutil */
+    -webkit-backdrop-filter: blur(8px);
     z-index: 10; /* Define a ordem de empilhamento para ficar sobre outros elementos */
-    border-bottom: 1px solid rgba(154, 160, 166, 0.1); /* Borda sutil */
     gap: 1rem; /* Espaçamento entre os elementos flex */
 }
 
+/* Borda sutil com gradiente para o Header */
+header::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px; /* Apenas uma borda inferior */
+    background: linear-gradient(to right, transparent, var(--primary-color), transparent);
+}
+
 header h1 {
-    font-size: 1.5rem; /* Tamanho da fonte */
+    font-size: 1.8rem; /* Tamanho da fonte aumentado para mais imponência */
     font-weight: 500; /* Peso da fonte (médio) */
     white-space: nowrap; /* Impede a quebra de linha do texto */
+    color: var(--secondary-color);
 }
 
 .search-wrapper {
@@ -294,15 +316,29 @@ article a:hover {
 }
 
 .footer {
-    max-width: 80rem;
-    margin: 0 auto;
+    position: relative; /* Necessário para o pseudo-elemento da borda */
+    /* Efeito Glassmorphism para o footer, igual ao header */
+    background: rgba(32, 33, 36, 0.85); /* Fundo mais opaco para mais nitidez */
+    backdrop-filter: blur(8px); /* Desfoque mais sutil */
+    -webkit-backdrop-filter: blur(8px);
     color: var(--tertiary-color); /* Cor do texto */
-    padding: 2rem;
-    border-top: 1px solid rgba(154, 160, 166, 0.1); /* Borda sutil e consistente */
-    font-size: 0.8rem; /* Tamanho da fonte */
+    padding: 1.5rem 1rem; /* Espaçamento ajustado, igual ao header */
+    font-size: 1rem; /* Tamanho da fonte aumentado para melhor leitura */
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 10;
+}
+
+/* Borda lilás com gradiente para o Footer (no topo) */
+.footer::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px; /* Apenas uma borda superior */
+    background: linear-gradient(to right, transparent, var(--quaternary-color), transparent);
 }
 
 .footer-links {
@@ -325,6 +361,7 @@ article a:hover {
     header { /* Estilos para telas com largura máxima de 768px */
         flex-direction: column; /* Organiza os itens do cabeçalho em coluna */
         padding: 1rem; /* Reduz o espaçamento interno */
+        gap: 1rem;
     }
 
     header h1 { /* Estilos para o h1 no cabeçalho em telas menores */
@@ -381,6 +418,15 @@ article a:hover {
     }
 }
 
+/* --- Animação do Fundo Tech Grid --- */
+@keyframes move-grid {
+    from {
+        background-position: 0 0, 0 0; /* Posição inicial: pontos, gradiente */
+    }
+    to {
+        background-position: -1000px -1000px, 0 0; /* Posição final: pontos se movem, gradiente fica parado */
+    }
+}
 /* --- Animações --- */
 @keyframes fadeInSlideUp {
     to {
