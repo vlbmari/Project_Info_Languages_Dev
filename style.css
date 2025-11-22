@@ -559,6 +559,29 @@ article a:hover::after {
     color: var(--primary-color);
 }
 
+/* Container para as tags dentro do modal, reutilizando o estilo do card */
+.modal-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.75rem; /* Espaçamento acima das tags */
+}
+
+/* Estilo para as caixas de Vantagem/Desvantagem no modal, replicando o estilo de .curiosidade */
+.modal-info-box {
+    background-color: #202124; /* Cor de fundo um pouco mais escura que o modal */
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem; /* Garante espaço entre as caixas */
+}
+
+/* Estiliza o <strong> dentro das caixas de info para corresponder ao estilo de "Curiosidade" */
+.modal-info-box strong {
+    color: var(--tertiary-color);
+    font-weight: 400;
+}
+
+
 
 /* --- Estilos da Seção de Curiosidades --- */
 .curiosidades-container {

@@ -142,6 +142,19 @@ const detalhesExecucao = {
     }
 };
 
+// Novo objeto para os detalhes dos Níveis de Linguagem
+const detalhesNivel = {
+    "Nível alto": {
+        descricao: "Linguagens mais próximas da comunicação humana. Elas abstraem detalhes complexos do hardware, tornando a programação mais rápida, fácil e menos propensa a erros."
+    },
+    "Nível intermediário": {
+        descricao: "Atuam como uma ponte, oferecendo tanto abstrações de alto nível quanto a capacidade de acessar recursos de baixo nível, como gerenciamento de memória. Combinam poder e produtividade."
+    },
+    "Nível baixo": {
+        descricao: "Linguagens muito próximas do código de máquina. Oferecem controle máximo sobre o hardware e performance extrema, mas são complexas e difíceis de usar."
+    }
+};
+
 const modalOverlay = document.getElementById('modal-overlay');
 const modalTitle = document.getElementById('modal-title');
 const modalAdvantage = document.getElementById('modal-advantage');
@@ -151,12 +164,26 @@ const modalCloseBtn = document.getElementById('modal-close');
 document.querySelectorAll('.details-btn').forEach(button => {
     button.addEventListener('click', () => {
         const tipo = button.getAttribute('data-tipo');
-        const detalhes = detalhesExecucao[tipo];
+        const nivel = button.getAttribute('data-nivel');
 
-        if (detalhes) {
+        if (tipo) { // Se o botão for de "Tipos de Execução"
+            const detalhes = detalhesExecucao[tipo];
             modalTitle.textContent = tipo;
             modalAdvantage.innerHTML = detalhes.vantagem;
             modalDisadvantage.innerHTML = detalhes.desvantagem;
+            modalOverlay.style.display = 'flex';
+        } else if (nivel) { // Se o botão for de "Níveis de Linguagem"
+            const detalhes = detalhesNivel[nivel];
+            // Filtra as linguagens correspondentes a este nível
+            const linguagensHtml = dados
+                .filter(dado => dado.nivel === nivel)
+                .map(dado => `<span class="tag-item">${dado.nome}</span>`)
+                .join('');
+
+            modalTitle.textContent = nivel;
+            modalAdvantage.innerHTML = detalhes.descricao; // Usa o primeiro parágrafo para a descrição
+            // Usa o segundo parágrafo para a lista de linguagens
+            modalDisadvantage.innerHTML = `<strong>Linguagens:</strong><div class="modal-tags-container">${linguagensHtml}</div>`;
             modalOverlay.style.display = 'flex';
         }
     });
