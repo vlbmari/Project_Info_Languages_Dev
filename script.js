@@ -179,12 +179,6 @@ function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColo
     const titleElement = document.querySelector(selector);
     if (!titleElement) return;
 
-    // Pega o contêiner pai do título para fixar sua largura
-    const titleContainer = titleElement.parentElement;
-    if (titleContainer) {
-        titleContainer.style.width = `${titleContainer.getBoundingClientRect().width}px`;
-    }
-
     const originalText = titleElement.textContent;
     titleElement.innerHTML = ''; // Limpa o conteúdo para usar spans
 
@@ -220,6 +214,51 @@ function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColo
         iterations += 1 / 3; // Controla a velocidade da "revelação"
     }, 50); // Controla a velocidade da animação geral
 }
+
+// --- Lógica do Menu Hambúrguer ---
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileNav = document.getElementById('mobile-nav');
+const navLinks = document.querySelectorAll('.nav-link');
+const header = document.querySelector('header'); // Seleciona o cabeçalho
+
+function toggleMenu() {
+    hamburgerBtn.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    // Impede o scroll do body quando o menu está aberto
+    if (mobileNav.classList.contains('open')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        // Restaura apenas a rolagem vertical, preservando o overflow-x: hidden do CSS.
+        document.body.style.overflowY = 'auto';
+    }
+}
+
+hamburgerBtn.addEventListener('click', toggleMenu);
+
+// Adiciona rolagem suave com offset ao clicar em um link do menu
+navLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault(); // Impede o comportamento padrão do link
+
+        const targetId = link.getAttribute('href'); // Pega o href (ex: #tipos-execucao)
+        const targetElement = document.querySelector(targetId); // Encontra o elemento na página
+
+        if (targetElement) {
+            const headerHeight = header.offsetHeight; // Pega a altura atual do header
+            const extraOffset = 20; // Um espaço extra para não colar no header
+            const targetPosition = targetElement.offsetTop - headerHeight - extraOffset;
+
+            // Rola a página para a posição calculada
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        }
+
+        // Fecha o menu após o clique
+        toggleMenu();
+    });
+});
 
 // Inicia o carregamento dos dados assim que o script é lido
 inicializar();

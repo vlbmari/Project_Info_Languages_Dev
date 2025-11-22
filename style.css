@@ -53,8 +53,7 @@ body {
     /* A animação move a primeira camada (pontos), a segunda (gradiente) fica parada */
     animation: move-grid 120s linear infinite;
     background-attachment: fixed; /* Fixa o background, evitando repetição na rolagem */
-    height: 100vh;
-    overflow-y: auto;
+    overflow-x: hidden; /* Impede a rolagem horizontal */
     color: var(--secondary-color); /* Define a cor do texto padrão usando uma variável */
     font-family: "Quicksand", sans-serif; /* Define a família da fonte */
 }
@@ -90,7 +89,6 @@ header h1 {
     font-size: 2.8rem; /* Tamanho da fonte aumentado para mais impacto */
     font-weight: 700; /* Peso da fonte (negrito) */
     font-family: 'Orbitron', sans-serif; /* Nova fonte futurista */
-    white-space: nowrap; /* Impede a quebra de linha do texto */
 
     /* Efeito de gradiente no texto */
     background: linear-gradient(90deg, var(--primary-color), var(--quinary-color), var(--quaternary-color));
@@ -122,24 +120,6 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 2rem; /* Espaço entre o título e o link de navegação */
-}
-
-.header-nav-right a {
-    color: var(--tertiary-color);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
-    position: relative;
-    padding-bottom: 4px;
-    transition: color 0.2s ease;
-}
-
-.header-nav-right a:hover {
-    color: var(--primary-color);
-}
-
-.header-nav-right a::after {
-    content: none; /* Remove o sublinhado animado dos links de artigo */
 }
 
 .search-wrapper {
@@ -440,8 +420,7 @@ article a:hover {
 @media (max-width: 480px) {
     header h1 { /* Estilos para o h1 em telas com largura máxima de 480px */
         font-size: 1rem; /* Reduz ainda mais o tamanho da fonte */
-        max-width: 70%; /* Define uma largura máxima */
-        word-wrap: break-word; /* Permite a quebra de palavras longas */
+        white-space: normal; /* Permite que o título quebre a linha se necessário */
     }
 
     div input, /* Estilos para o input e seu placeholder em telas muito pequenas */
@@ -497,6 +476,87 @@ article a:hover::after {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* --- Estilos do Menu Hambúrguer --- */
+.hamburger-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 20; /* Garante que o botão fique acima do menu */
+}
+
+.hamburger-line {
+    width: 2.25rem;
+    height: 0.25rem;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(1) {
+    transform: rotate(45deg);
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+}
+
+.hamburger-btn.open .hamburger-line:nth-child(3) {
+    transform: rotate(-45deg);
+}
+
+.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha os links ao topo */
+    align-items: flex-start; /* Alinha os links à esquerda */
+    gap: 2rem;
+    /* Efeito Glassmorphism consistente com o header */
+    background: rgba(32, 33, 36, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    height: 100vh;
+    width: 280px; /* Largura fixa para o menu lateral */
+    position: fixed;
+    top: 0;
+    right: 0; /* Alinha o menu à direita */    
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s, border-left-color 0.3s ease-in-out;
+    transform: translateX(100%);
+    z-index: 15;
+    padding-top: 6rem; /* Espaço para não ficar atrás do header */
+    padding-left: 2rem; /* Espaçamento interno para os links */
+    border-left: 1px solid transparent; /* Borda inicialmente transparente */
+    visibility: hidden; /* Garante que o menu esteja completamente escondido */
+    opacity: 0; /* Torna o menu invisível para a transição */
+}
+
+.mobile-nav.open {
+    transform: translateX(0);
+    border-left-color: rgba(154, 160, 166, 0.1); /* Restaura a cor da borda quando aberto */
+    visibility: visible;
+    opacity: 1;
+}
+
+.mobile-nav .nav-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.mobile-nav .nav-link:hover {
+    color: var(--primary-color);
 }
 
 
