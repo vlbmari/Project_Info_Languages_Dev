@@ -20,6 +20,11 @@ summary, time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+/* Rolagem suave ao clicar em links âncora */
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
 }
@@ -56,7 +61,7 @@ body {
 
 header {
     position: relative; /* Necessário para o pseudo-elemento da borda */
-    padding: 1.5rem 1rem; /* Espaçamento interno ajustado para ser menos afastado */
+    padding: 1rem; /* Espaçamento interno ajustado */
     display: flex; /* Habilita o layout flexbox */
     align-items: center; /* Alinha os itens verticalmente ao centro */
     justify-content: space-between; /* Título à esquerda, busca à direita */
@@ -82,10 +87,34 @@ header::after {
 }
 
 header h1 {
-    font-size: 1.8rem; /* Tamanho da fonte aumentado para mais imponência */
+    font-size: 1.5rem; /* Tamanho da fonte ajustado */
     font-weight: 500; /* Peso da fonte (médio) */
     white-space: nowrap; /* Impede a quebra de linha do texto */
     color: var(--secondary-color);
+}
+
+.header-content-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Espaço entre o título e o link de navegação */
+}
+
+.header-nav-right a {
+    color: var(--tertiary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+.header-nav-right a:hover {
+    color: var(--primary-color);
+}
+
+.header-nav-right a::after {
+    content: none; /* Remove o sublinhado animado dos links de artigo */
 }
 
 .search-wrapper {
@@ -98,16 +127,16 @@ div input {
     border-radius: 1rem; /* Arredonda as bordas */
     border: 1px solid var(--tertiary-color); /* Define a borda */
     background: var(--bg-color); /* Cor de fundo */
-    font-family: inherit; /* Herda a família da fonte do elemento pai */
-    font-size: 1.5rem; /* Tamanho da fonte */
+    font-family: inherit;
+    font-size: 1rem; /* Tamanho da fonte reduzido */
     transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades */
-    width: 30rem; /* Largura do input */
+    width: 25rem; /* Largura do input reduzida */
     color: var(--secondary-color); /* Cor do texto digitado */
     margin-right: .5rem; /* Margem à direita */
 }
 
 div input::placeholder {
-    font-size: 1.2rem; /* Tamanho da fonte do placeholder */
+    font-size: 1rem; /* Tamanho da fonte do placeholder ajustado */
     font-weight: 300; /* Peso da fonte do placeholder */
     color: var(--tertiary-color); /* Cor do texto do placeholder */
 }
@@ -119,12 +148,12 @@ div input:focus {
 }
 
 #botao-busca {
-    padding: 1rem 2rem; /* Espaçamento interno */
+    padding: 0.75rem 1.5rem; /* Espaçamento interno reduzido */
     border-radius: 1rem; /* Arredonda as bordas */
     border: none; /* Remove a borda padrão */
     cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
     font-family: inherit; /* Herda a família da fonte */
-    font-weight: 500; /* Peso da fonte */
+    font-weight: 500;
     font-size: 1rem; /* Tamanho da fonte */
     white-space: nowrap; /* Impede a quebra de linha do texto */
     transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
@@ -182,7 +211,7 @@ main {
 /* --- Layout do Grid de Cards --- */
 .card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Largura mínima reduzida */
     gap: 1.5rem;
 }
 
@@ -194,7 +223,7 @@ article {
     backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
     -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
     border-radius: 0.75rem; /* Bordas arredondadas */
-    padding: 1.5rem; /* Espaçamento interno */
+    padding: 1.25rem; /* Espaçamento interno reduzido */
     border: 1px solid rgba(154, 160, 166, 0.1); /* Borda ainda mais sutil */
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
 
@@ -241,13 +270,13 @@ article:hover::before {
 
 article h2 {
     font-weight: 600; /* Peso da fonte */
-    font-size: 1.6rem; /* Tamanho da fonte */
+    font-size: 1.4rem; /* Tamanho da fonte reduzido */
     margin-bottom: 0.25rem; /* Margem inferior */
     color: var(--primary-color); /* Cor do texto */
 }
 
 .card-logo {
-    height: 40px; /* Define a altura do logo */
+    height: 35px; /* Altura do logo reduzida */
     width: auto; /* Deixa a largura se ajustar para não distorcer a imagem */
     object-fit: contain; /* Garante que o logo inteiro apareça, sem cortar */
     margin-bottom: 1rem; /* Adiciona um espaço abaixo do logo */
@@ -257,7 +286,7 @@ article h2 {
 article p {
     margin: 0.5rem 0; /* Margem superior e inferior */
     line-height: 1.6; /* Altura da linha para melhor legibilidade */
-    font-size: 1rem; /* Tamanho da fonte */
+    font-size: 0.9rem; /* Tamanho da fonte reduzido */
     margin-bottom: 0.5rem; /* Margem inferior */
     color: var(--secondary-color); /* Cor do texto */
 }
@@ -306,7 +335,7 @@ article a:hover {
     color: var(--secondary-color);
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 .curiosidade {

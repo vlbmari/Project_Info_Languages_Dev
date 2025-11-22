@@ -25,13 +25,19 @@
     <div id="stars3" style="background-image: url('http://www.script-tutorials.com/demos/360/images/clouds.png'); animation-duration: 120s; opacity: 0.3;"></div>
 
     <header>
-        <h1>Base de Conhecimento</h1>
-        <div class="search-wrapper" role="search">
-            <input type="text" id="campo-busca" oninput="handleSearchInput()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
-            <button id="botao-busca" onclick="realizarBusca()">Buscar</button>
-            <div id="sugestoes-container"></div>
+        <div class="header-content-left">
+            <h1>Base de Conhecimento</h1>
+            <div class="search-wrapper" role="search">
+                <input type="text" id="campo-busca" oninput="handleSearchInput()" placeholder="Digite o nome de uma linguagem de programação" autocomplete="off">
+                <button id="botao-busca" onclick="realizarBusca()">Buscar</button>
+                <div id="sugestoes-container"></div>
+            </div>
         </div>
+        <nav class="header-nav-right">
+            <a href="#tipos-execucao">Tipos de Execução</a>
+        </nav>
     </header>
+
     <main>
         <section class="card-container">
             <!-- <article class="card">
@@ -43,7 +49,7 @@
         </section>
 
         <section>
-            <h2>Entenda sobre tipos de execução:</h2>
+            <h2 id="tipos-execucao">Entenda sobre tipos de execução:</h2>
             <div class="curiosidades-container">
                 <div class="curiosidade-card">
                     <h3>Compilada</h3>
