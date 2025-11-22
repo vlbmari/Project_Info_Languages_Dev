@@ -98,7 +98,7 @@ function renderizarCards(dados){
         <p>${dado.descricao}</p>
         <p class="curiosidade"><strong>Curiosidade:</strong> ${dado.curiosidade}</p> 
         <p><strong>Execução: ${dado.tipo_execucao}</strong></p>
-        <p>Nível: <strong style="color: ${nivelColor};">${dado.nivel}</strong></p>
+        <p><strong>Nível:</strong> <strong style="color: ${nivelColor};">${dado.nivel}</strong></p>
         <a href="${dado.link}" target="_blank" rel="noopener noreferrer">Saiba mais</a> 
         `
         cardContainer.appendChild(article);
@@ -117,28 +117,28 @@ document.addEventListener('click', function(event) {
 
 const detalhesExecucao = {
     "Compilada": {
-        vantagem: "<strong>Vantagem:</strong> Performance máxima, pois o código já está na linguagem da máquina.",
-        desvantagem: "<strong>Desvantagem:</strong> Menos portável. O programa só roda no sistema para o qual foi compilado."
+        vantagem: "<strong class='modal-subtitle color-vantagem'>Vantagens:</strong> Performance máxima, pois o código já está na linguagem da máquina.",
+        desvantagem: "<strong class='modal-subtitle color-desvantagem'>Desvantagens:</strong> Menos portável. O programa só roda no sistema para o qual foi compilado."
     },
     "Interpretada": {
-        vantagem: "<strong>Vantagem:</strong> Altamente portável (roda em qualquer sistema com o interpretador) e desenvolvimento ágil.",
-        desvantagem: "<strong>Desvantagem:</strong> Performance inferior à do código compilado."
+        vantagem: "<strong class='modal-subtitle color-vantagem'>Vantagens:</strong> Altamente portável (roda em qualquer sistema com o interpretador) e desenvolvimento ágil.",
+        desvantagem: "<strong class='modal-subtitle color-desvantagem'>Desvantagens:</strong> Performance inferior à do código compilado."
     },
     "Interpretada (JIT)": {
-        vantagem: "<strong>Vantagem:</strong> Ótimo equilíbrio entre a flexibilidade da interpretação e a velocidade da compilação.",
-        desvantagem: "<strong>Desvantagem:</strong> Pode ter um 'aquecimento' inicial (warm-up) mais lento enquanto otimiza o código."
+        vantagem: "<strong class='modal-subtitle color-vantagem'>Vantagens:</strong> Ótimo equilíbrio entre a flexibilidade da interpretação e a velocidade da compilação.",
+        desvantagem: "<strong class='modal-subtitle color-desvantagem'>Desvantagens:</strong> Pode ter um 'aquecimento' inicial (warm-up) mais lento enquanto otimiza o código."
     },
     "Traduzida (Transpilada)": {
-        vantagem: "<strong>Vantagem:</strong> Permite usar recursos de linguagens modernas em plataformas que não as suportam nativamente.",
-        desvantagem: "<strong>Desvantagem:</strong> Adiciona um passo extra de compilação ao desenvolvimento e pode complicar a depuração."
+        vantagem: "<strong class='modal-subtitle color-vantagem'>Vantagens:</strong> Permite usar recursos de linguagens modernas em plataformas que não as suportam nativamente.",
+        desvantagem: "<strong class='modal-subtitle color-desvantagem'>Desvantagens:</strong> Adiciona um passo extra de compilação ao desenvolvimento e pode complicar a depuração."
     },
     "Compilada para bytecode": {
-        vantagem: "<strong>Vantagem:</strong> Excelente portabilidade ('escreva uma vez, rode em qualquer lugar' com a JVM).",
-        desvantagem: "<strong>Desvantagem:</strong> Exige que a Máquina Virtual Java (JVM) esteja instalada no sistema."
+        vantagem: "<strong class='modal-subtitle color-vantagem'>Vantagens:</strong> Excelente portabilidade ('escreva uma vez, rode em qualquer lugar' com a JVM).",
+        desvantagem: "<strong class='modal-subtitle color-desvantagem'>Desvantagens:</strong> Exige que a Máquina Virtual Java (JVM) esteja instalada no sistema."
     },
     "Compilada para IL": {
-        vantagem: "<strong>Vantagem:</strong> Portabilidade entre sistemas (com o .NET Core/5+) e interoperabilidade entre linguagens .NET.",
-        desvantagem: "<strong>Desvantagem:</strong> Exige que o Common Language Runtime (CLR) esteja instalado no sistema."
+        vantagem: "<strong class='modal-subtitle color-vantagem'>Vantagens:</strong> Portabilidade entre sistemas (com o .NET Core/5+) e interoperabilidade entre linguagens .NET.",
+        desvantagem: "<strong class='modal-subtitle color-desvantagem'>Desvantagens:</strong> Exige que o Common Language Runtime (CLR) esteja instalado no sistema."
     }
 };
 
@@ -183,7 +183,7 @@ document.querySelectorAll('.details-btn').forEach(button => {
             modalTitle.textContent = nivel;
             modalAdvantage.innerHTML = detalhes.descricao; // Usa o primeiro parágrafo para a descrição
             // Usa o segundo parágrafo para a lista de linguagens
-            modalDisadvantage.innerHTML = `<strong>Linguagens:</strong><div class="modal-tags-container">${linguagensHtml}</div>`;
+            modalDisadvantage.innerHTML = `<strong class="modal-subtitle">Linguagens:</strong><div class="modal-tags-container">${linguagensHtml}</div>`;
             modalOverlay.style.display = 'flex';
         }
     });

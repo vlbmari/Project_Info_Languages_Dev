@@ -120,6 +120,9 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 2rem; /* Espaço entre o título e o link de navegação */
+    /* Adiciona uma largura mínima para evitar que a animação do título afete o layout.
+       Este valor reserva espaço suficiente para o título "Guia Dev" finalizado. */
+    min-width: 280px;
 }
 
 .search-wrapper {
@@ -581,6 +584,22 @@ article a:hover::after {
     font-weight: 400;
 }
 
+/* Estilo para subtítulos dentro do modal, como "Linguagens:", "Vantagens:", etc. */
+.modal-subtitle {
+    color: var(--tertiary-color);
+    font-weight: 400;
+}
+
+/* Cores específicas para os títulos de vantagem/desvantagem no modal */
+.color-vantagem {
+    /* Usa a cor verde-limão da paleta */
+    color: var(--quinary-color);
+}
+
+.color-desvantagem {
+    /* Usa a cor laranja pastel da paleta */
+    color: var(--seventh-color);
+}
 
 
 /* --- Estilos da Seção de Curiosidades --- */
