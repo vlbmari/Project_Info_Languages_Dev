@@ -63,20 +63,21 @@ function getCurvaDesc(nome) {
 
 // 2. Lógica para ABRIR o Modal do Gráfico
 function abrirCurvaModal(dado) {
+    
     const pontosSvg = obterCurvaQualitativa(dado.nome);
     const nome = dado.nome;
     
     // 1. Bloqueia a rolagem do corpo
     document.body.classList.add('no-scroll');
-
+    
     // 2. Prepara o conteúdo do modal
     curvaModalTitle.textContent = `Curva de Aprendizagem de ${nome}`;
     curvaModalDesc.textContent = `Esta é uma representação qualitativa: ${nome} tende a ter uma curva inicial ${getCurvaDesc(nome)}.`;
 
-    // 3. Injeta o SVG e os eixos
+
     curvaModalBody.innerHTML = `
         <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-            <polyline points="${pontosSvg}" fill="none" stroke="#d2fc83b9" stroke-width="2"/>
+            <polyline points="${pontosSvg}" fill="none" stroke="#d2fc83b9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         <span class="eixo-y">Proficiência</span>
         <span class="eixo-x">Tempo/Esforço</span>
@@ -84,6 +85,11 @@ function abrirCurvaModal(dado) {
     
     // 4. Mostra o modal
     curvaModalOverlay.style.display = 'flex';
+        // --- ADIÇÃO CRÍTICA PARA REINICIAR A ANIMAÇÃO ---
+    // Removemos e readicionamos a animação do overlay para garantir que ela toque novamente
+    curvaModalOverlay.style.animation = 'none';
+    curvaModalOverlay.offsetHeight; /* Trigger reflow (força o navegador a recalcular) */
+    curvaModalOverlay.style.animation = 'overlayFadeIn 0.4s ease-out forwards';
 }
 
 // 3. Lógica para FECHAR o Modal do Gráfico

@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap'); /* Importa a fonte Quicksand do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+
 
 /* --- CSS Reset --- */
 html, body, div, span, applet, object, iframe,
@@ -20,57 +21,52 @@ summary, time, mark, audio, video {
     vertical-align: baseline;
 }
 
-/* Rolagem suave ao clicar em links âncora */
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Habilita rolagem suave para links âncora */
 }
 
 * {
-    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho total do elemento */
+    box-sizing: border-box; /* Inclui padding e border no tamanho total do elemento */
 }
 
 :root {
-    --primary-color: #8ab4f8; /* Cor primária (azul claro) */
-    --secondary-color: #e8eaed; /* Cor secundária (cinza claro) */
-    --tertiary-color: #9aa0a6; /* Cor terciária (cinza médio) */
-    --quaternary-color: #df77bc; /* Cor quaternária (rosa/magenta) */
-    --quinary-color: #d2fc83b9; /* Cor quinária (verde-limão) */
-    --seventh-color: #ffaf69; /* Laranja pastel */
-    --sixth-gradient: linear-gradient(to right, var(--quaternary-color), var(--quinary-color)); /* Gradiente da 4ª para a 5ª cor */
-    --bg-color: #222024; /* Cor de fundo (cinza escuro) */
+    --primary-color: #8ab4f8;
+    --secondary-color: #e8eaed;
+    --tertiary-color: #9aa0a6;
+    --quaternary-color: #df77bc;
+    --quinary-color: #d2fc83b9;
+    --seventh-color: #ffaf69;
+    --sixth-gradient: linear-gradient(to right, var(--quaternary-color), var(--quinary-color));
+    --bg-color: #222024;
     --bg-color-two: #8ab4f844;
 }
 
-
 body {
-    /* Fundo "Tech Grid" animado com tons de azul e roxo */
-    background-color: #0c0a17; /* Um roxo bem escuro como base */
+    background-color: #0c0a17;
     background-image:
         /* Camada de pontos */
         radial-gradient(circle at 1px 1px, rgba(138, 180, 248, 0.5) 1px, transparent 0),
         /* Camada de fundo gradiente */
         radial-gradient(ellipse at bottom, #1b2735, #0c0a17 80%);
     background-size: 20px 20px, 100% 100%;
-    /* A animação move a primeira camada (pontos), a segunda (gradiente) fica parada */
-    animation: move-grid 120s linear infinite;
-    background-attachment: fixed; /* Fixa o background, evitando repetição na rolagem */
-    overflow-x: hidden; /* Impede a rolagem horizontal */
-    color: var(--secondary-color); /* Define a cor do texto padrão usando uma variável */
-    font-family: "Quicksand", sans-serif; /* Define a família da fonte */
+    animation: move-grid 120s linear infinite; /* Anima a posição do background */
+    background-attachment: fixed; /* Mantém o background fixo durante a rolagem */
+    overflow-x: hidden; /* Previne a rolagem horizontal */
+    color: var(--secondary-color);
+    font-family: "Quicksand", sans-serif;
 }
 
-/* CLASSE PARA BLOQUEAR O SCROLL DO BODY QUANDO O MODAL ESTIVER ABERTO */
 .no-scroll {
-    overflow: hidden !important;
+    overflow: hidden !important; /* Bloqueia o scroll do body */
 }
 
 header {
-    position: relative; /* Necessário para o pseudo-elemento da borda */
-    padding: 1rem; /* Espaçamento interno ajustado */
-    display: flex; /* Habilita o layout flexbox */
-    align-items: center; /* Alinha os itens verticalmente ao centro */
-    justify-content: space-between; /* Título à esquerda, busca à direita */
-    position: sticky; /* Mantém o cabeçalho fixo no topo ao rolar a página */
+    position: relative;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky; /* Mantém o cabeçalho fixo no topo */
 
     /* Efeito Glassmorphism mais nítido */
     background: rgba(32, 33, 36, 0.85); /* Fundo mais opaco */
@@ -80,14 +76,13 @@ header {
     gap: 1rem; /* Espaçamento entre os elementos flex */
 }
 
-/* Borda sutil com gradiente para o Header */
 header::after {
     content: '';
     position: absolute;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 2px; /* Apenas uma borda inferior */
+    height: 2px;
     background: linear-gradient(to right, transparent, var(--primary-color), transparent);
 }
 
@@ -99,7 +94,7 @@ header h1 {
     /* Efeito de gradiente no texto */
     background: linear-gradient(90deg, var(--primary-color), var(--quinary-color), var(--quaternary-color));
     background-clip: text;
-    -webkit-background-clip: text; /* Para compatibilidade com navegadores Webkit */
+    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; /* Torna o texto transparente para mostrar o gradiente */
     background-size: 200% auto; /* Tamanho do fundo para a animação */
 }
@@ -126,8 +121,6 @@ header h1 {
     display: flex;
     align-items: center;
     gap: 2rem; /* Espaço entre o título e o link de navegação */
-    /* Adiciona uma largura mínima para evitar que a animação do título afete o layout.
-         Este valor reserva espaço suficiente para o título "Guia Dev" finalizado. */
     min-width: 280px;
 }
 
@@ -137,14 +130,14 @@ header h1 {
 }
 
 div input {
-    padding: 0.375rem 0.75rem; /* Espaçamento interno */
-    border-radius: 1rem; /* Arredonda as bordas */
-    border: 1px solid var(--tertiary-color); /* Define a borda */
-    background: var(--bg-color); /* Cor de fundo */
+    padding: 0.375rem 0.75rem;
+    border-radius: 1rem;
+    border: 1px solid var(--tertiary-color);
+    background: var(--bg-color);
     font-family: inherit;
-    font-size: 1rem; /* Tamanho da fonte reduzido */
-    transition: all 0.2s ease; /* Adiciona uma transição suave para todas as propriedades */
-    width: 25rem; /* Largura do input reduzida */
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    width: 25rem;
     color: var(--secondary-color); /* Cor do texto digitado */
     margin-right: .5rem; /* Margem à direita */
 }
@@ -162,16 +155,16 @@ div input:focus {
 }
 
 #botao-busca {
-    padding: 0.75rem 1.5rem; /* Espaçamento interno reduzido */
-    border-radius: 1rem; /* Arredonda as bordas */
-    border: none; /* Remove a borda padrão */
-    cursor: pointer; /* Muda o cursor para uma mão ao passar por cima */
-    font-family: inherit; /* Herda a família da fonte */
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
     font-weight: 500;
-    font-size: 1rem; /* Tamanho da fonte */
-    white-space: nowrap; /* Impede a quebra de linha do texto */
-    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave para cor de fundo e cor do texto */
-    background-color: var(--bg-color-two); /* Cor de fundo */
+    font-size: 1rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    background-color: var(--bg-color-two);
     color: var(--secondary-color); /* Cor do texto */
     border: 1px solid var(--bg-color); /* Adiciona uma borda */
 }
@@ -187,7 +180,7 @@ div input:focus {
 }
 
 #sugestoes-container {
-    position: absolute;
+    position: absolute; /* Posiciona em relação ao .search-wrapper */
     top: 100%; /* Posiciona logo abaixo do input */
     left: 0;
     right: 0;
@@ -215,10 +208,10 @@ div input:focus {
 }
 
 main {
-    max-width: 80rem; /* Largura máxima do conteúdo principal */
-    margin: 0 auto; /* Centraliza o conteúdo principal horizontalmente */
-    margin-top: 2rem; /* Margem no topo */
-    padding: 0 2rem; /* Adiciona um espaçamento lateral para telas médias */
+    max-width: 80rem;
+    margin: 0 auto; /* Centraliza o conteúdo horizontalmente */
+    margin-top: 2rem;
+    padding: 0 2rem;
     padding-bottom: 8rem; /* Adiciona espaço para não sobrepor o rodapé */
 }
 
@@ -230,23 +223,21 @@ main {
 }
 
 article {
-    position: relative; /* Necessário para o pseudo-elemento da borda */
-    overflow: hidden; /* Garante que a borda animada não vaze */
+    position: relative;
+    overflow: hidden;
     
-    /* MODIFICAÇÃO CHAVE PARA ALINHAMENTO DO BOTÃO */
     display: flex;
     flex-direction: column; /* Organiza os itens verticalmente */
-    height: 100%; /* Garante que o conteúdo estique o card para a altura máxima disponível */
-    /* FIM DA MODIFICAÇÃO CHAVE */
+    height: 100%; /* Garante que todos os cards na mesma linha tenham a mesma altura */
     
     /* Efeito Glassmorphism */
-    background: rgba(41, 42, 45, 0.75); /* Fundo semitransparente, um pouco mais opaco */
-    backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
-    -webkit-backdrop-filter: blur(10px); /* Suporte para Safari */
-    border-radius: 0.75rem; /* Bordas arredondadas */
-    padding: 1.25rem; /* Espaçamento interno reduzido */
-    border: 1px solid rgba(154, 160, 166, 0.1); /* Borda ainda mais sutil */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+    background: rgba(41, 42, 45, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(154, 160, 166, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 
     /* Animação de entrada */
     opacity: 0;
@@ -264,7 +255,7 @@ article::before {
     right: 0;
     bottom: 0;
     border-radius: inherit; /* Herda o border-radius do card */
-    padding: 1px; /* Espessura da borda */
+    padding: 1px;
     background: conic-gradient(from 0deg, var(--primary-color), var(--quaternary-color), var(--quinary-color), var(--primary-color));
     -webkit-mask: 
         linear-gradient(#fff 0 0) content-box, 
@@ -273,7 +264,7 @@ article::before {
         linear-gradient(#fff 0 0) content-box, 
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
-    mask-composite: exclude;
+    mask-composite: exclude; /* Cria o efeito de borda vazada */
     z-index: -1;
 }
 
@@ -281,7 +272,7 @@ article:hover {
     /* Efeito de "flutuação" aprimorado */
     transform: translateY(-8px) scale(1.02);
     box-shadow: 0 8px 25px rgba(138, 180, 248, 0.15);
-    cursor: pointer; /* Muda o cursor para uma mão */
+    cursor: pointer;
 }
 
 /* Ativa a animação da borda apenas no hover */
@@ -290,37 +281,37 @@ article:hover::before {
 }
 
 article h2 {
-    font-weight: 600; /* Peso da fonte */
-    font-size: 1.4rem; /* Tamanho da fonte reduzido */
-    margin-bottom: 0.25rem; /* Margem inferior */
-    color: var(--primary-color); /* Cor do texto */
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+    color: var(--primary-color);
 }
 
 .card-logo {
-    height: 35px; /* Altura do logo reduzida */
-    width: auto; /* Deixa a largura se ajustar para não distorcer a imagem */
-    object-fit: contain; /* Garante que o logo inteiro apareça, sem cortar */
-    margin-bottom: 1rem; /* Adiciona um espaço abaixo do logo */
-    align-self: flex-start; /* Alinha o logo no início do card */
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    align-self: flex-start;
 }
 
 article p {
-    margin: 0.5rem 0; /* Margem superior e inferior */
-    line-height: 1.6; /* Altura da linha para melhor legibilidade */
-    font-size: 0.9rem; /* Tamanho da fonte reduzido */
-    margin-bottom: 0.5rem; /* Margem inferior */
-    color: var(--secondary-color); /* Cor do texto */
+    margin: 0.5rem 0;
+    line-height: 1.6;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
 }
 
 article p strong {
-    color: var(--tertiary-color); /* Cor do texto em negrito */
-    font-weight: 400; /* Peso da fonte */
+    color: var(--tertiary-color);
+    font-weight: 400;
 }
 
 article a {
-    color: var(--primary-color); /* Cor do link */
-    position: relative; /* Para o pseudo-elemento do sublinhado */
-    text-decoration: none; /* Remove o sublinhado padrão */
+    color: var(--primary-color);
+    position: relative;
+    text-decoration: none;
     font-weight: 500; /* Peso da fonte */
     display: inline-block; /* Para que o pseudo-elemento funcione corretamente */
     padding-bottom: 2px;
@@ -369,89 +360,180 @@ article a:hover {
     border-radius: 0.25rem;
 }
 
+/* --- Footer Profissional --- */
 .footer {
-    position: relative; /* Necessário para o pseudo-elemento da borda */
-    /* Efeito Glassmorphism para o footer, igual ao header */
-    background: rgba(32, 33, 36, 0.85); /* Fundo mais opaco para mais nitidez */
-    backdrop-filter: blur(8px); /* Desfoque mais sutil */
-    -webkit-backdrop-filter: blur(8px);
-    color: var(--tertiary-color); /* Cor do texto */
-    padding: 1.5rem 1rem; /* Espaçamento ajustado, igual ao header */
-    font-size: 1rem; /* Tamanho da fonte aumentado para melhor leitura */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
+    background: rgba(20, 20, 23, 0.95); /* Fundo bem escuro e sólido */
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(138, 180, 248, 0.1); /* Borda sutil no topo */
+    color: var(--tertiary-color);
+    padding: 4rem 2rem 1rem; /* Mais espaço no topo */
+    font-size: 0.95rem;
+    display: block; /* Remove o display flex antigo que quebrava o layout novo */
     z-index: 10;
-    bottom: 0;
-    width: 100%;
 }
 
-/* Borda lilás com gradiente para o Footer (no topo) */
-.footer::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    height: 2px; /* Apenas uma borda superior */
-    background: linear-gradient(to right, transparent, var(--quaternary-color), transparent);
+/* Container do Grid */
+.footer-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
-.footer-links {
-    display: flex; /* Habilita o layout flexbox */
-    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-    gap: 1.5rem; /* Espaçamento entre os links */
+/* Estilos dos Títulos das Colunas */
+.footer-section h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif; /* Mantendo a identidade visual */
 }
 
-.footer-links a {
-    color: var(--secondary-color); /* Cor do link */
-    text-decoration: none; /* Remove o sublinhado */
-    transition: color 0.2s ease; /* Transição suave para a cor */
+/* Coluna 1: Texto da Marca */
+.footer-section.brand p {
+    line-height: 1.6;
+    max-width: 300px;
 }
 
-.footer-links a:hover {
-    color: var(--primary-color); /* Muda a cor do link ao passar o mouse */
+/* Coluna 2: Lista de Links */
+.footer-section.links ul {
+    list-style: none;
 }
 
+.footer-section.links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-section.links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+/* Efeito de hover nos links: muda cor e move para a direita */
+.footer-section.links a:hover {
+    color: var(--quinary-color);
+    padding-left: 5px; /* Pequeno movimento */
+}
+
+/* Coluna 3: Ícones Sociais */
+.social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%; /* Círculo perfeito */
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.social-icons a:hover {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    transform: translateY(-3px); /* Flutua ao passar o mouse */
+    box-shadow: 0 5px 15px rgba(138, 180, 248, 0.3);
+}
+
+.location {
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* --- Rodapé Inferior (Copyright) --- */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+}
+
+.beat-icon {
+    color: #ff4757; /* Cor vermelha para o coração */
+    animation: heartBeat 1.5s infinite; /* Animação de batida */
+    margin: 0 3px;
+}
+
+/* Animação do Coração batendo */
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Responsividade Mobile */
 @media (max-width: 768px) {
-    header { /* Estilos para telas com largura máxima de 768px */
-        flex-direction: column; /* Organiza os itens do cabeçalho em coluna */
-        padding: 1rem; /* Reduz o espaçamento interno */
+    .footer-content {
+        grid-template-columns: 1fr; /* Uma coluna só no mobile */
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .footer-section.brand p {
+        margin: 0 auto; /* Centraliza o texto */
+    }
+    
+    .social-icons {
+        justify-content: center; /* Centraliza ícones */
+    }
+    
+    .location {
+        justify-content: center;
+    }
+}
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
         gap: 1rem;
     }
 
-    header h1 { /* Estilos para o h1 no cabeçalho em telas menores */
-        text-align: center; /* Centraliza o texto */
-        margin-bottom: 1rem; /* Adiciona margem inferior */
+    header h1 {
+        text-align: center;
+        margin-bottom: 1rem;
     }
 
-    div input { /* Estilos para o input em telas menores */
-        width: 90vw; /* Largura baseada na largura da viewport */
-        font-size: 1.2rem; /* Reduz o tamanho da fonte */
+    div input {
+        width: 90vw;
+        font-size: 1.2rem;
     }
 
-    main { /* Estilos para o main em telas menores */
-        padding: 0 1rem; /* Reduz o espaçamento lateral para telas menores */
+    main {
+        padding: 0 1rem;
     }
 
-    article:hover { /* Estilos para o article em telas menores */
-        transform: none; /* Remove o efeito de escala ao passar o mouse */
+    article:hover {
+        transform: none; /* Remove o efeito de hover em telas menores */
     }
 }
 
 @media (max-width: 480px) {
-    header h1 { /* Estilos para o h1 em telas com largura máxima de 480px */
-        font-size: 1rem; /* Reduz ainda mais o tamanho da fonte */
-        white-space: normal; /* Permite que o título quebre a linha se necessário */
+    header h1 {
+        font-size: 1rem;
+        white-space: normal;
     }
 
-    div input, /* Estilos para o input e seu placeholder em telas muito pequenas */
+    div input,
     div input::placeholder {
-        font-size: 1rem; /* Reduz o tamanho da fonte */
+        font-size: 1rem;
     }
 
-    article h2 { /* Estilos para o h2 do article em telas muito pequenas */
-        font-size: 1.3rem; /* Reduz o tamanho da fonte */
+    article h2 {
+        font-size: 1.3rem;
     }
 
     div { /* Estilos para a div do cabeçalho em telas muito pequenas */
@@ -468,8 +550,8 @@ article a:hover {
         text-align: center;
     }
 
-    button { /* Estilos para o botão em telas muito pequenas */
-        margin-top: 1rem; /* Adiciona margem no topo */
+    button {
+        margin-top: 1rem;
     }
 }
 
@@ -542,24 +624,24 @@ article a:hover::after {
     flex-direction: column;
     justify-content: flex-start; /* Alinha os links ao topo */
     align-items: flex-start; /* Alinha os links à esquerda */
-    gap: 2rem;
+    gap: 2rem; /* Espaçamento entre os links do menu */
     /* Efeito Glassmorphism consistente com o header */
     background: rgba(32, 33, 36, 0.85);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     height: 100vh;
-    width: 280px; /* Largura fixa para o menu lateral */
+    width: 280px;
     position: fixed;
     top: 0;
     right: 0; /* Alinha o menu à direita */ 
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s, border-left-color 0.3s ease-in-out;
-    transform: translateX(100%);
+    transform: translateX(100%); /* Esconde o menu fora da tela */
     z-index: 15;
     padding-top: 6rem; /* Espaço para não ficar atrás do header */
-    padding-left: 2rem; /* Espaçamento interno para os links */
-    border-left: 1px solid transparent; /* Borda inicialmente transparente */
-    visibility: hidden; /* Garante que o menu esteja completamente escondido */
-    opacity: 0; /* Torna o menu invisível para a transição */
+    padding-left: 2rem;
+    border-left: 1px solid transparent;
+    visibility: hidden; /* Esconde o menu para acessibilidade */
+    opacity: 0;
 }
 
 .mobile-nav.open {
@@ -585,13 +667,13 @@ article a:hover::after {
 .modal-tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 0.75rem; /* Espaçamento acima das tags */
+    gap: 0.6rem; /* Espaçamento entre as tags */
+    margin-top: 0.75rem;
 }
 
 /* Estilo para as caixas de Vantagem/Desvantagem no modal, replicando o estilo de .curiosidade */
 .modal-info-box {
-    background-color: #202124; /* Cor de fundo um pouco mais escura que o modal */
+    background-color: #202124;
     padding: 0.75rem;
     border-radius: 0.5rem;
     margin-bottom: 1rem; /* Garante espaço entre as caixas */
@@ -623,7 +705,6 @@ article a:hover::after {
 
 /* --- Estilos da Seção de Curiosidades --- */
 .curiosidades-container {
-    /* Novo layout em grade para as definições */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
@@ -631,12 +712,11 @@ article a:hover::after {
 }
 
 .curiosidade-card {
-    /* Estilo de "definição" com borda à esquerda */
-    background-color: rgba(41, 42, 45, 0.5); /* Fundo sutil */
+    background-color: rgba(41, 42, 45, 0.5);
     border-left: 4px solid;
     border-image: linear-gradient(to bottom, var(--primary-color), var(--quaternary-color)) 1;
     padding: 1.5rem;
-    border-radius: 0 0.5rem 0.5rem 0; /* Bordas arredondadas, exceto na esquerda */
+    border-radius: 0 0.5rem 0.5rem 0;
     text-align: left; /* Alinhamento à esquerda para melhor leitura */
     transition: background-color 0.3s ease;
 }
@@ -646,13 +726,13 @@ article a:hover::after {
 }
 
 .curiosidade-card h3 {
-    color: var(--primary-color); /* Cor primária para o título */
-    font-weight: 600; /* Peso da fonte */
-    margin-bottom: 0.5rem; /* Margem inferior */
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .curiosidade-card p {
-    font-size: 0.9rem; /* Tamanho da fonte do parágrafo */
+    font-size: 0.9rem;
 }
 
 /* --- Estilos do Título da Seção --- */
@@ -661,15 +741,13 @@ article a:hover::after {
     font-weight: 500;
     text-align: center;
     
-    /* Propriedades para o efeito de gradiente no texto */
-    /* A propriedade 'background' agora usa uma variável '--title-gradient' */
-    /* que será definida em cada ID específico. */
+    /* A variável --title-gradient é definida em cada ID específico */
     background: var(--title-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 2rem;
-    margin-top: 4rem; /* Mantém o espaçamento superior */
+    margin-top: 4rem;
 }
 
 #linguagens {
@@ -719,7 +797,7 @@ article a:hover::after {
     border-style: dotted;
 
     /* Garante transições suaves para todas as propriedades alteradas */
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, border-style 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .nivel-alto {
@@ -738,31 +816,82 @@ article a:hover::after {
     box-shadow: 0 0 20px rgba(var(--shadow-rgb), 0.25); /* Brilho correspondente à cor */
 }
 
-/* --- Estilos do Modal (Padrão para os dois modais) --- */
+/* --- Animação do Overlay (Fundo) --- */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: none; /* Inicialmente escondido */
+    z-index: 1000;
+    /* Começa escondido e é ativado via JS */
+    display: none; 
+    
+    /* Estas propriedades só funcionam quando o JS trocar o display para 'flex' */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
+    
+    /* Estado inicial para a animação */
+    background-color: rgba(0, 0, 0, 0); 
+    backdrop-filter: blur(0px);
+    
+    animation: overlayFadeIn 0.4s ease-out forwards;
 }
 
+/* --- Animação do Conteúdo (O Card) --- */
 .modal-content {
+    /* Mantenha seu estilo visual existente */
     background: #292a2d;
     padding: 2rem;
     border-radius: 0.75rem;
     border: 1px solid rgba(154, 160, 166, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     position: relative;
     max-width: 500px;
     width: 90%;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    
+    /* Estado inicial para animação */
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    
+    /* Animação com um leve 'delay' para começar depois do fundo */
+    animation: modalPopUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s forwards;
 }
+
+/* --- O "UAU": Animação da Linha do Gráfico SVG --- */
+/* Isso faz a linha se desenhar sozinha */
+.modal-content svg polyline {
+    stroke-dasharray: 1000; /* Comprimento do traço (maior que a linha) */
+    stroke-dashoffset: 1000; /* Deslocamento do traço (esconde a linha) */
+    animation: drawLine 1.5s ease-out 0.4s forwards; /* Desenha após o modal abrir */
+    
+    /* Brilho neon na linha */
+    filter: drop-shadow(0 0 4px var(--quinary-color)); 
+}
+
+/* --- Definição dos Keyframes (As coreografias) --- */
+
+@keyframes overlayFadeIn {
+    to {
+        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+    }
+}
+
+@keyframes modalPopUp {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes drawLine {
+    to {
+        stroke-dashoffset: 0; /* Traz a linha de volta à posição visível */
+    }
+}
+--
+/* --- Estilos do Modal (Padrão para os dois modais) --- */
 
 /* Estilo para o NOVO modal de curva (maior e centralizado) */
 .modal-curva {
@@ -785,7 +914,6 @@ article a:hover::after {
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
-
 
 .modal-content p {
     line-height: 1.6;
@@ -819,12 +947,12 @@ article a:hover::after {
     font-weight: 500;
     
     /* Alinhamento no final do card flex */
-    margin-top: auto; 
+    margin-top: auto; /* Empurra o botão para o final do card */
     margin-bottom: 0; 
     
-    display: block; /* Ocupa a largura total do card */
+    display: block;
     width: 100%;
-    flex-shrink: 0; 
+    flex-shrink: 0; /* Impede que o botão encolha */
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -837,7 +965,7 @@ article a:hover::after {
 /* Estilo do Wrapper para o SVG no MODAL */
 .grafico-wrapper-modal {
     position: relative;
-    height: 250px; /* Aumenta a altura para o modal */
+    height: 250px;
     width: 100%;
     margin: 1.5rem 0;
     padding: 0 5%;
@@ -852,7 +980,7 @@ article a:hover::after {
 .grafico-wrapper-modal svg {
     width: 100%;
     height: 100%;
-    border: none; /* Remove a borda do SVG interno, ela fica no wrapper */
+    border: none;
     border-left: 1px solid rgba(154, 160, 166, 0.3); /* Eixo Y */
     border-bottom: 1px solid rgba(154, 160, 166, 0.3); /* Eixo X */
     overflow: visible;
@@ -887,3 +1015,4 @@ article a:hover::after {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 4px;
 }
+

@@ -1,5 +1,6 @@
 [
 {
+    "icon": "devicon-python-plain colored",
     "nome": "Python",
     "ano": 1991,
     "descricao": "Famosa por sua filosofia de simplicidade e legibilidade, é a porta de entrada para muitos programadores e uma potência em IA e análise de dados.",
@@ -11,6 +12,7 @@
     "tipo_execucao": "Interpretada"
 },
 {
+    
     "nome": "JavaScript",
     "ano": 1995,
     "descricao": "A linguagem onipresente da web, responsável por dar vida e interatividade a virtualmente todos os sites. Roda em qualquer lugar, do navegador ao servidor.",
@@ -103,7 +105,7 @@
     "ano": 2010,
     "descricao": "Obcecada por segurança e performance. Garante segurança de memória sem um coletor de lixo, tornando-a ideal para sistemas onde falhas não são uma opção.",
     "curiosidade": "A comunidade Rust tem um mascote não oficial, um caranguejo amigável chamado Ferris.",
-    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rust/rust-plain.svg",
+    "logo_url": "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-icon.svg",
     "tags": ["Sistemas", "Segurança", "WebAssembly"],
     "link": "https://www.rust-lang.org/",
     "nivel": "Nível intermediário",
@@ -125,7 +127,7 @@
     "ano": 1949,
     "descricao": "A forma mais pura de comunicação com o processador. Não é uma linguagem, mas uma representação legível do código de máquina, usada para controle e otimização extremos.",
     "curiosidade": "Não é uma única linguagem, mas um grupo de linguagens. Cada arquitetura de processador (como x86 ou ARM) tem seu próprio Assembly.",
-    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Assembly_icon.svg/2048px-Assembly_icon.svg.png",
+    "logo_url": "https://www.svgrepo.com/show/373445/assembly.svg",
     "tags": ["Hardware", "Otimização", "Drivers"],
     "link": "https://en.wikipedia.org/wiki/Assembly_language",
     "nivel": "Nível baixo",
