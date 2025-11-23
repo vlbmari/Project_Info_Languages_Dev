@@ -1,9 +1,6 @@
 let cardContainer = document.querySelector(".card-container");
+let categoriaAtiva = 'Todos'; 
 let dados = [];
-
-// ====================================================================
-// --- LÓGICA DO NOVO MODAL PARA CURVA DE APRENDIZAGEM ---
-// ====================================================================
 
 const curvaModalOverlay = document.getElementById('curva-modal-overlay');
 const curvaModalTitle = document.getElementById('curva-modal-title');
@@ -12,34 +9,24 @@ const curvaModalDesc = document.getElementById('curva-modal-desc');
 const curvaModalCloseBtn = document.getElementById('curva-modal-close');
 
 
-// 1. Lógica para gerar os pontos da curva (Mantida, mas refatorada para ser standalone)
 function obterCurvaQualitativa(nome) {
-    // Esta função gera um array de pontos (Proficiência x Tempo) para desenhar uma linha SVG
     const tempo = Array.from({ length: 20 }, (_, i) => i);
     let proficiencia;
 
-    // A lógica de curva é qualitativa, baseada na percepção comum de dificuldade:
     if (nome.includes("Python") || nome.includes("PHP") || nome.includes("Fortran") || nome.includes("COBOL")) {
-        // Curva Suave (Logarítmica): Fácil de começar, se estabiliza.
         proficiencia = tempo.map(t => Math.min(90, 30 * Math.log1p(t * 0.5) + 10));
     } else if (nome.includes("JavaScript") || nome.includes("TypeScript") || nome.includes("Swift")) {
-        // Curva S (Sigmoide): Início fácil, pico de dificuldade (frameworks/tipagem), depois sobe.
         proficiencia = tempo.map(t => 100 / (1 + Math.exp(-0.25 * (t - 10))));
     } else if (nome.includes("C#") || nome.includes("Java") || nome.includes("Go")) {
-        // Curva Intermediária/Equilibrada: Curva estável, exige base sólida.
         proficiencia = tempo.map(t => 100 * (1 - Math.exp(-0.15 * t)));
     } else if (nome.includes("C++") || nome.includes("Rust") || nome.includes("C")) {
-        // Curva Íngreme Inicial (Exponencial Inversa): Barreira de entrada alta (memória, ponteiros).
         proficiencia = tempo.map(t => 100 * (1 - Math.exp(-0.25 * t * t / 20)));
     } else if (nome.includes("Assembly")) {
-        // Barreira Extrema: Crescimento muito lento e exigente.
         proficiencia = tempo.map(t => Math.min(100, t * 1.5 + (t > 10 ? 10 : 0)));
     } else {
-        // Padrão (Linear)
         proficiencia = tempo.map(t => t * 5);
     }
     
-    // Normaliza e inverte o Y (0 é o topo no SVG)
     const maxProf = Math.max(...proficiencia);
     const pontos = proficiencia.map((p, i) => {
         const x = (i / (tempo.length - 1)) * 100;
@@ -50,7 +37,6 @@ function obterCurvaQualitativa(nome) {
     return pontos;
 }
 
-// Função auxiliar para dar uma breve descrição da curva
 function getCurvaDesc(nome) {
     if (nome.includes("Python") || nome.includes("PHP") || nome.includes("COBOL")) return "suave (fácil de começar)";
     if (nome.includes("JavaScript") || nome.includes("TypeScript")) return "em S (com pico de complexidade)";
@@ -60,17 +46,13 @@ function getCurvaDesc(nome) {
     return "linear";
 }
 
-
-// 2. Lógica para ABRIR o Modal do Gráfico
 function abrirCurvaModal(dado) {
     
     const pontosSvg = obterCurvaQualitativa(dado.nome);
     const nome = dado.nome;
     
-    // 1. Bloqueia a rolagem do corpo
     document.body.classList.add('no-scroll');
     
-    // 2. Prepara o conteúdo do modal
     curvaModalTitle.textContent = `Curva de Aprendizagem de ${nome}`;
     curvaModalDesc.textContent = `Esta é uma representação qualitativa: ${nome} tende a ter uma curva inicial ${getCurvaDesc(nome)}.`;
 
@@ -83,54 +65,41 @@ function abrirCurvaModal(dado) {
         <span class="eixo-x">Tempo/Esforço</span>
     `;
     
-    // 4. Mostra o modal
     curvaModalOverlay.style.display = 'flex';
-        // --- ADIÇÃO CRÍTICA PARA REINICIAR A ANIMAÇÃO ---
-    // Removemos e readicionamos a animação do overlay para garantir que ela toque novamente
     curvaModalOverlay.style.animation = 'none';
-    curvaModalOverlay.offsetHeight; /* Trigger reflow (força o navegador a recalcular) */
+    curvaModalOverlay.offsetHeight; 
     curvaModalOverlay.style.animation = 'overlayFadeIn 0.4s ease-out forwards';
 }
 
-// 3. Lógica para FECHAR o Modal do Gráfico
 function fecharCurvaModal() {
     curvaModalOverlay.style.display = 'none';
-    document.body.classList.remove('no-scroll'); // Remove a classe que bloqueia o scroll
+    document.body.classList.remove('no-scroll'); 
 }
 
 curvaModalCloseBtn.addEventListener('click', fecharCurvaModal);
 curvaModalOverlay.addEventListener('click', (event) => {
-    // Fecha o modal apenas se o clique for no overlay
     if (event.target === curvaModalOverlay) {
         fecharCurvaModal();
     }
 });
 
 
-// 4. Criação do Botão Curva dentro do Card
 function renderizarBotaoCurva(dado) {
     const button = document.createElement('button');
     button.className = 'btn-curva';
     button.textContent = 'Ver Curva de Aprendizagem';
     
-    // Evento de clique chama o modal do gráfico
     button.addEventListener('click', (event) => {
-        event.stopPropagation(); // Impede que cliques no botão ativem o evento do card pai
+        event.stopPropagation(); 
         abrirCurvaModal(dado);
     });
 
     return button;
 }
 
-
-// ====================================================================
-// --- MODIFICAÇÃO DA FUNÇÃO RENDERIZARCARDS ---
-// ====================================================================
-
 function renderizarCards(dados){
-    cardContainer.innerHTML = ""; // Limpa os cards existentes antes de renderizar novos
+    cardContainer.innerHTML = ""; 
 
-    // Ordena o array 'dados' em ordem alfabética pelo nome
     dados.sort((a, b) => a.nome.localeCompare(b.nome));
 
     dados.forEach((dado, index) => {
@@ -147,15 +116,12 @@ function renderizarCards(dados){
                 break;
         }
 
-        // Cria o HTML para as tags
         const tagsHtml = dado.tags.map(tag => `<span class="tag-item">${tag}</span>`).join('');
 
         let article = document.createElement("article");
         article.classList.add("card");
-        // Adiciona um atraso escalonado para a animação de entrada
         article.style.animationDelay = `${index * 0.05}s`;
         
-        // Conteúdo básico do Card
         article.innerHTML = ` 
             <img class="card-logo" src="${dado.logo_url}" alt="Logo ${dado.nome}">
             <h2>${dado.nome}</h2>
@@ -168,7 +134,6 @@ function renderizarCards(dados){
             <a href="${dado.link}" target="_blank" rel="noopener noreferrer">Saiba mais</a> 
         `;
 
-        // INSERE O NOVO BOTÃO DENTRO DO CARD AQUI
         const btnCurva = renderizarBotaoCurva(dado);
         article.appendChild(btnCurva);
 
@@ -176,16 +141,63 @@ function renderizarCards(dados){
     });
 }
 
-// ====================================================================
-// --- RESTO DO CÓDIGO (Busca, Inicialização, Menu) ---
-// ====================================================================
-
-// Função para carregar os dados e renderizar tudo inicialmente
 async function inicializar() {
     const resposta = await fetch("data.json");
     dados = await resposta.json();
-    renderizarCards(dados); // Mostra todos os cards ao carregar a página
+
+    const filterContainer = document.getElementById('filter-container');
+    const categorias = ['Todos', 'Linguagem de Programação', 'Framework/Biblioteca', 'Banco de Dados', 'Ferramenta/Plataforma'];
+    
+    const nomesExibicao = {
+        'Linguagem de Programação': 'Tecnologias',
+        'Framework/Biblioteca': 'Frameworks',
+        'Banco de Dados': 'Bancos de Dados',
+        'Ferramenta/Plataforma': 'Ferramentas'
+    };
+
+    categorias.forEach(categoria => {
+        const button = document.createElement('button');
+        button.classList.add('filter-btn');
+        button.setAttribute('data-categoria', categoria);
+        button.textContent = nomesExibicao[categoria] || categoria; 
+        if (categoria === 'Todos') {
+            button.classList.add('active');
+        }
+        filterContainer.appendChild(button);
+    });
+
+    filtrarErenderizar(); 
+
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation(); 
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            categoriaAtiva = button.getAttribute('data-categoria');
+            filtrarErenderizar();
+
+            // Rola para a seção de linguagens após o filtro
+            const linguagensSection = document.getElementById('linguagens');
+            if (linguagensSection) {
+                linguagensSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            setTimeout(() => {
+                filterContainer.classList.remove('show');
+                const filterToggleButton = document.getElementById('filter-toggle-btn');
+                filterToggleButton.setAttribute('aria-expanded', 'false');
+            }, 100);
+        });
+    });
+
+    const filterToggleButton = document.getElementById('filter-toggle-btn');
+    filterToggleButton.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isShown = filterContainer.classList.toggle('show');
+        filterToggleButton.setAttribute('aria-expanded', isShown);
+    });
 }
+
 
 function mostrarSugestoes() {
     const termoBusca = document.getElementById("campo-busca").value.toLowerCase();
@@ -194,12 +206,15 @@ function mostrarSugestoes() {
     sugestoesContainer.innerHTML = "";
 
     if (termoBusca.length === 0) {
-        return; // Não mostra sugestões se o campo estiver vazio
+        return; 
     }
 
     const sugestoesFiltradas = dados
-        .filter(dado => dado.nome.toLowerCase().startsWith(termoBusca))
-        .slice(0, 5); // Limita a 5 sugestões
+        .filter(dado => 
+            dado.nome.toLowerCase().startsWith(termoBusca) &&
+            (categoriaAtiva === 'Todos' || dado.categoria === categoriaAtiva)
+        )
+        .slice(0, 5); 
 
     sugestoesFiltradas.forEach(sugestao => {
         const item = document.createElement("div");
@@ -212,50 +227,47 @@ function mostrarSugestoes() {
 
 function selecionarSugestao(nome) {
     document.getElementById("campo-busca").value = nome;
-    document.getElementById("sugestoes-container").innerHTML = ""; // Limpa sugestões
-    realizarBusca(); // Realiza a busca completa
+    document.getElementById("sugestoes-container").innerHTML = ""; 
+    filtrarErenderizar();
 
-    // Rola a tela para a seção de linguagens após a seleção
+    // Rola a página para a seção de cards após a seleção
     const linguagensSection = document.getElementById('linguagens');
     if (linguagensSection) {
         linguagensSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
 
-function realizarBusca() {
-    // Pega o termo de busca do input e converte para minúsculas
+function filtrarErenderizar() {
     const campoBusca = document.getElementById("campo-busca");
     const termoBusca = campoBusca.value.toLowerCase();
-    
-    // Só limpa as sugestões se o campo de busca não estiver focado (ou seja, após um clique no botão ou seleção)
-    if (document.activeElement !== campoBusca) {
-        document.getElementById("sugestoes-container").innerHTML = ""; // Garante que as sugestões sumam
-    }
-
-    // Filtra os dados com base no termo de busca
-    const dadosFiltrados = dados.filter(dado => {
-        // Retorna true se o nome da linguagem começar com o termo de busca.
-        return dado.nome.toLowerCase().startsWith(termoBusca);
+    let dadosFiltrados = dados.filter(dado => {
+        return categoriaAtiva === 'Todos' || dado.categoria === categoriaAtiva;
     });
 
+    dadosFiltrados = dadosFiltrados.filter(dado => {
+        return dado.nome.toLowerCase().includes(termoBusca);
+    });
     renderizarCards(dadosFiltrados);
 }
 
-// Nova função para lidar com a entrada do usuário em tempo real
 function handleSearchInput() {
     mostrarSugestoes();
-    realizarBusca();
+    filtrarErenderizar();
 }
 
-// Fecha as sugestões se o usuário clicar fora
 document.addEventListener('click', function(event) {
     const searchWrapper = document.querySelector('.search-wrapper');
     if (!searchWrapper.contains(event.target)) {
         document.getElementById('sugestoes-container').innerHTML = '';
     }
-});
 
-// --- Lógica do Modal de Tipos de Execução e Nível ---
+    const filterContainer = document.getElementById('filter-container');
+    const filterToggleButton = document.getElementById('filter-toggle-btn');
+    if (!filterContainer.contains(event.target) && !filterToggleButton.contains(event.target)) {
+        filterContainer.classList.remove('show');
+        filterToggleButton.setAttribute('aria-expanded', 'false');
+    }
+});
 
 const detalhesExecucao = {
     "Compilada": {
@@ -304,29 +316,26 @@ const modalCloseBtn = document.getElementById('modal-close');
 
 document.querySelectorAll('.details-btn').forEach(button => {
     button.addEventListener('click', () => {
-        // Bloqueia o scroll do body ao abrir o modal de Nível/Execução também
         document.body.classList.add('no-scroll');
 
         const tipo = button.getAttribute('data-tipo');
         const nivel = button.getAttribute('data-nivel');
 
-        if (tipo) { // Se o botão for de "Tipos de Execução"
+        if (tipo) { 
             const detalhes = detalhesExecucao[tipo];
             modalTitle.textContent = tipo;
             modalAdvantage.innerHTML = detalhes.vantagem;
             modalDisadvantage.innerHTML = detalhes.desvantagem;
             modalOverlay.style.display = 'flex';
-        } else if (nivel) { // Se o botão for de "Níveis de Linguagem"
+        } else if (nivel) { 
             const detalhes = detalhesNivel[nivel];
-            // Filtra as linguagens correspondentes a este nível
             const linguagensHtml = dados
                 .filter(dado => dado.nivel === nivel)
                 .map(dado => `<span class="tag-item">${dado.nome}</span>`)
                 .join('');
 
             modalTitle.textContent = nivel;
-            modalAdvantage.innerHTML = detalhes.descricao; // Usa o primeiro parágrafo para a descrição
-            // Usa o segundo parágrafo para a lista de linguagens
+            modalAdvantage.innerHTML = detalhes.descricao; 
             modalDisadvantage.innerHTML = `<strong class="modal-subtitle">Linguagens:</strong><div class="modal-tags-container">${linguagensHtml}</div>`;
             modalOverlay.style.display = 'flex';
         }
@@ -335,30 +344,27 @@ document.querySelectorAll('.details-btn').forEach(button => {
 
 function fecharModal() {
     modalOverlay.style.display = 'none';
-    document.body.classList.remove('no-scroll'); // Libera o scroll
+    document.body.classList.remove('no-scroll'); 
 }
 
 modalCloseBtn.addEventListener('click', fecharModal);
 modalOverlay.addEventListener('click', (event) => {
-    // Fecha o modal apenas se o clique for no overlay, não no conteúdo
     if (event.target === modalOverlay) {
         fecharModal();
     }
 });
 
 
-// --- Animação do Título Principal ---
 function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColorClass = 'scrambling') {
     const titleElement = document.querySelector(selector);
     if (!titleElement) return;
 
     const originalText = titleElement.textContent;
-    titleElement.innerHTML = ''; // Limpa o conteúdo para usar spans
+    titleElement.innerHTML = ''; 
 
-    // Cria um span para cada caractere
     originalText.split('').forEach(char => {
         const span = document.createElement('span');
-        span.textContent = char === ' ' ? '\u00A0' : char; // Usa non-breaking space para espaços
+        span.textContent = char === ' ' ? '\u00A0' : char; 
         span.classList.add('binary-char');
         titleElement.appendChild(span);
     });
@@ -373,7 +379,6 @@ function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColo
                 span.classList.add(finalColorClass);
                 span.classList.remove(scrambleColorClass);
             } else {
-                // Gera um caractere binário aleatório (0 ou 1)
                 span.textContent = Math.random() < 0.5 ? '0' : '1';
                 span.classList.add(scrambleColorClass);
                 span.classList.remove(finalColorClass);
@@ -384,20 +389,18 @@ function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColo
             clearInterval(interval);
         }
 
-        iterations += 1 / 3; // Controla a velocidade da "revelação"
-    }, 50); // Controla a velocidade da animação geral
+        iterations += 1 / 3; 
+    }, 50); 
 }
 
-// --- Lógica do Menu Hambúrguer ---
 const hamburgerBtn = document.getElementById('hamburger-btn');
 const mobileNav = document.getElementById('mobile-nav');
 const navLinks = document.querySelectorAll('.nav-link');
-const header = document.querySelector('header'); // Seleciona o cabeçalho
+const header = document.querySelector('header'); 
 
-function toggleMenu() {
+function togglemenu() {
     hamburgerBtn.classList.toggle('open');
     mobileNav.classList.toggle('open');
-    // Impede o scroll do body quando o menu está aberto
     if (mobileNav.classList.contains('open')) {
         document.body.classList.add('no-scroll');
     } else {
@@ -407,44 +410,36 @@ function toggleMenu() {
 
 hamburgerBtn.addEventListener('click', toggleMenu);
 
-// Adiciona um evento para fechar o menu ao clicar fora dele
 document.addEventListener('click', (event) => {
     const isClickInsideNav = mobileNav.contains(event.target);
     const isClickOnHamburger = hamburgerBtn.contains(event.target);
 
-    // Se o menu estiver aberto e o clique não for no menu nem no botão, fecha o menu
     if (mobileNav.classList.contains('open') && !isClickInsideNav && !isClickOnHamburger) {
         toggleMenu();
     }
 });
 
-// Adiciona rolagem suave com offset ao clicar em um link do menu
 navLinks.forEach(link => {
     link.addEventListener('click', (event) => {
-        event.preventDefault(); // Impede o comportamento padrão do link
+        event.preventDefault(); 
 
-        const targetId = link.getAttribute('href'); // Pega o href (ex: #tipos-execucao)
-        const targetElement = document.querySelector(targetId); // Encontra o elemento na página
+        const targetId = link.getAttribute('href'); 
+        const targetElement = document.querySelector(targetId); 
 
         if (targetElement) {
-            const headerHeight = header.offsetHeight; // Pega a altura atual do header
-            const extraOffset = 20; // Um espaço extra para não colar no header
+            const headerHeight = header.offsetHeight; 
+            const extraOffset = 20; 
             const targetPosition = targetElement.offsetTop - headerHeight - extraOffset;
 
-            // Rola a página para a posição calculada
             window.scrollTo({
                 top: targetPosition,
                 behavior: 'smooth'
             });
         }
 
-        // Fecha o menu após o clique
         toggleMenu();
     });
 });
 
-
-// Inicia o carregamento dos dados assim que o script é lido
 inicializar();
-// Inicia a animação do título
 animateTitleBinary('#main-title');
