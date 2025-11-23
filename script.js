@@ -398,7 +398,7 @@ const mobileNav = document.getElementById('mobile-nav');
 const navLinks = document.querySelectorAll('.nav-link');
 const header = document.querySelector('header'); 
 
-function togglemenu() {
+function toggleMenu() {
     hamburgerBtn.classList.toggle('open');
     mobileNav.classList.toggle('open');
     if (mobileNav.classList.contains('open')) {

@@ -434,6 +434,8 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
     gap: 2.5rem;
+    min-height: 80vh;
+    align-content: start;
 }
 
 article {
