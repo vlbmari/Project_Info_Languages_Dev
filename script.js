@@ -1,6 +1,179 @@
 let cardContainer = document.querySelector(".card-container");
 let dados = [];
 
+// ====================================================================
+// --- LÓGICA DO NOVO MODAL PARA CURVA DE APRENDIZAGEM ---
+// ====================================================================
+
+const curvaModalOverlay = document.getElementById('curva-modal-overlay');
+const curvaModalTitle = document.getElementById('curva-modal-title');
+const curvaModalBody = document.getElementById('curva-modal-body');
+const curvaModalDesc = document.getElementById('curva-modal-desc');
+const curvaModalCloseBtn = document.getElementById('curva-modal-close');
+
+
+// 1. Lógica para gerar os pontos da curva (Mantida, mas refatorada para ser standalone)
+function obterCurvaQualitativa(nome) {
+    // Esta função gera um array de pontos (Proficiência x Tempo) para desenhar uma linha SVG
+    const tempo = Array.from({ length: 20 }, (_, i) => i);
+    let proficiencia;
+
+    // A lógica de curva é qualitativa, baseada na percepção comum de dificuldade:
+    if (nome.includes("Python") || nome.includes("PHP") || nome.includes("Fortran") || nome.includes("COBOL")) {
+        // Curva Suave (Logarítmica): Fácil de começar, se estabiliza.
+        proficiencia = tempo.map(t => Math.min(90, 30 * Math.log1p(t * 0.5) + 10));
+    } else if (nome.includes("JavaScript") || nome.includes("TypeScript") || nome.includes("Swift")) {
+        // Curva S (Sigmoide): Início fácil, pico de dificuldade (frameworks/tipagem), depois sobe.
+        proficiencia = tempo.map(t => 100 / (1 + Math.exp(-0.25 * (t - 10))));
+    } else if (nome.includes("C#") || nome.includes("Java") || nome.includes("Go")) {
+        // Curva Intermediária/Equilibrada: Curva estável, exige base sólida.
+        proficiencia = tempo.map(t => 100 * (1 - Math.exp(-0.15 * t)));
+    } else if (nome.includes("C++") || nome.includes("Rust") || nome.includes("C")) {
+        // Curva Íngreme Inicial (Exponencial Inversa): Barreira de entrada alta (memória, ponteiros).
+        proficiencia = tempo.map(t => 100 * (1 - Math.exp(-0.25 * t * t / 20)));
+    } else if (nome.includes("Assembly")) {
+        // Barreira Extrema: Crescimento muito lento e exigente.
+        proficiencia = tempo.map(t => Math.min(100, t * 1.5 + (t > 10 ? 10 : 0)));
+    } else {
+        // Padrão (Linear)
+        proficiencia = tempo.map(t => t * 5);
+    }
+    
+    // Normaliza e inverte o Y (0 é o topo no SVG)
+    const maxProf = Math.max(...proficiencia);
+    const pontos = proficiencia.map((p, i) => {
+        const x = (i / (tempo.length - 1)) * 100;
+        const y = 100 - (p / maxProf) * 100;
+        return `${x},${y}`;
+    }).join(' ');
+
+    return pontos;
+}
+
+// Função auxiliar para dar uma breve descrição da curva
+function getCurvaDesc(nome) {
+    if (nome.includes("Python") || nome.includes("PHP") || nome.includes("COBOL")) return "suave (fácil de começar)";
+    if (nome.includes("JavaScript") || nome.includes("TypeScript")) return "em S (com pico de complexidade)";
+    if (nome.includes("C#") || nome.includes("Java") || nome.includes("Go")) return "equilibrada e estável";
+    if (nome.includes("C++") || nome.includes("Rust") || nome.includes("C")) return "muito íngreme (alta barreira inicial)";
+    if (nome.includes("Assembly")) return "extremamente lenta (requer alto domínio de hardware)";
+    return "linear";
+}
+
+
+// 2. Lógica para ABRIR o Modal do Gráfico
+function abrirCurvaModal(dado) {
+    const pontosSvg = obterCurvaQualitativa(dado.nome);
+    const nome = dado.nome;
+    
+    // 1. Bloqueia a rolagem do corpo
+    document.body.classList.add('no-scroll');
+
+    // 2. Prepara o conteúdo do modal
+    curvaModalTitle.textContent = `Curva de Aprendizagem de ${nome}`;
+    curvaModalDesc.textContent = `Esta é uma representação qualitativa: ${nome} tende a ter uma curva inicial ${getCurvaDesc(nome)}.`;
+
+    // 3. Injeta o SVG e os eixos
+    curvaModalBody.innerHTML = `
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+            <polyline points="${pontosSvg}" fill="none" stroke="#d2fc83b9" stroke-width="2"/>
+        </svg>
+        <span class="eixo-y">Proficiência</span>
+        <span class="eixo-x">Tempo/Esforço</span>
+    `;
+    
+    // 4. Mostra o modal
+    curvaModalOverlay.style.display = 'flex';
+}
+
+// 3. Lógica para FECHAR o Modal do Gráfico
+function fecharCurvaModal() {
+    curvaModalOverlay.style.display = 'none';
+    document.body.classList.remove('no-scroll'); // Remove a classe que bloqueia o scroll
+}
+
+curvaModalCloseBtn.addEventListener('click', fecharCurvaModal);
+curvaModalOverlay.addEventListener('click', (event) => {
+    // Fecha o modal apenas se o clique for no overlay
+    if (event.target === curvaModalOverlay) {
+        fecharCurvaModal();
+    }
+});
+
+
+// 4. Criação do Botão Curva dentro do Card
+function renderizarBotaoCurva(dado) {
+    const button = document.createElement('button');
+    button.className = 'btn-curva';
+    button.textContent = 'Ver Curva de Aprendizagem';
+    
+    // Evento de clique chama o modal do gráfico
+    button.addEventListener('click', (event) => {
+        event.stopPropagation(); // Impede que cliques no botão ativem o evento do card pai
+        abrirCurvaModal(dado);
+    });
+
+    return button;
+}
+
+
+// ====================================================================
+// --- MODIFICAÇÃO DA FUNÇÃO RENDERIZARCARDS ---
+// ====================================================================
+
+function renderizarCards(dados){
+    cardContainer.innerHTML = ""; // Limpa os cards existentes antes de renderizar novos
+
+    // Ordena o array 'dados' em ordem alfabética pelo nome
+    dados.sort((a, b) => a.nome.localeCompare(b.nome));
+
+    dados.forEach((dado, index) => {
+        let nivelColor = '';
+        switch (dado.nivel) {
+            case "Nível alto":
+                nivelColor = 'var(--quinary-color)';
+                break;
+            case "Nível intermediário":
+                nivelColor = 'var(--seventh-color)';
+                break;
+            case "Nível baixo":
+                nivelColor = 'var(--quaternary-color)';
+                break;
+        }
+
+        // Cria o HTML para as tags
+        const tagsHtml = dado.tags.map(tag => `<span class="tag-item">${tag}</span>`).join('');
+
+        let article = document.createElement("article");
+        article.classList.add("card");
+        // Adiciona um atraso escalonado para a animação de entrada
+        article.style.animationDelay = `${index * 0.05}s`;
+        
+        // Conteúdo básico do Card
+        article.innerHTML = ` 
+            <img class="card-logo" src="${dado.logo_url}" alt="Logo ${dado.nome}">
+            <h2>${dado.nome}</h2>
+            <p><strong>${dado.ano}</strong></p>
+            <div class="tags-container">${tagsHtml}</div>
+            <p>${dado.descricao}</p>
+            <p class="curiosidade"><strong>Curiosidade:</strong> ${dado.curiosidade}</p> 
+            <p><strong>Execução: ${dado.tipo_execucao}</strong></p>
+            <p><strong>Nível:</strong> <strong style="color: ${nivelColor};">${dado.nivel}</strong></p>
+            <a href="${dado.link}" target="_blank" rel="noopener noreferrer">Saiba mais</a> 
+        `;
+
+        // INSERE O NOVO BOTÃO DENTRO DO CARD AQUI
+        const btnCurva = renderizarBotaoCurva(dado);
+        article.appendChild(btnCurva);
+
+        cardContainer.appendChild(article);
+    });
+}
+
+// ====================================================================
+// --- RESTO DO CÓDIGO (Busca, Inicialização, Menu) ---
+// ====================================================================
+
 // Função para carregar os dados e renderizar tudo inicialmente
 async function inicializar() {
     const resposta = await fetch("data.json");
@@ -50,7 +223,6 @@ function realizarBusca() {
     // Filtra os dados com base no termo de busca
     const dadosFiltrados = dados.filter(dado => {
         // Retorna true se o nome da linguagem começar com o termo de busca.
-        // Isso torna a filtragem dos cards mais precisa e intuitiva.
         return dado.nome.toLowerCase().startsWith(termoBusca);
     });
 
@@ -63,48 +235,6 @@ function handleSearchInput() {
     realizarBusca();
 }
 
-function renderizarCards(dados){
-    cardContainer.innerHTML = ""; // Limpa os cards existentes antes de renderizar novos
-
-    // Ordena o array 'dados' em ordem alfabética pelo nome
-    dados.sort((a, b) => a.nome.localeCompare(b.nome));
-
-    dados.forEach((dado, index) => {
-        let nivelColor = '';
-        switch (dado.nivel) {
-            case "Nível alto":
-                nivelColor = 'var(--quinary-color)';
-                break;
-            case "Nível intermediário":
-                nivelColor = 'var(--seventh-color)';
-                break;
-            case "Nível baixo":
-                nivelColor = 'var(--quaternary-color)';
-                break;
-        }
-
-        // Cria o HTML para as tags
-        const tagsHtml = dado.tags.map(tag => `<span class="tag-item">${tag}</span>`).join('');
-
-        let article = document.createElement("article");
-        article.classList.add("card");
-        // Adiciona um atraso escalonado para a animação de entrada
-        article.style.animationDelay = `${index * 0.05}s`;
-        article.innerHTML = ` 
-        <img class="card-logo" src="${dado.logo_url}" alt="Logo ${dado.nome}">
-        <h2>${dado.nome}</h2>
-        <p><strong>${dado.ano}</strong></p>
-        <div class="tags-container">${tagsHtml}</div>
-        <p>${dado.descricao}</p>
-        <p class="curiosidade"><strong>Curiosidade:</strong> ${dado.curiosidade}</p> 
-        <p><strong>Execução: ${dado.tipo_execucao}</strong></p>
-        <p><strong>Nível:</strong> <strong style="color: ${nivelColor};">${dado.nivel}</strong></p>
-        <a href="${dado.link}" target="_blank" rel="noopener noreferrer">Saiba mais</a> 
-        `
-        cardContainer.appendChild(article);
-    });
-}
-
 // Fecha as sugestões se o usuário clicar fora
 document.addEventListener('click', function(event) {
     const searchWrapper = document.querySelector('.search-wrapper');
@@ -113,7 +243,7 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// --- Lógica do Modal de Tipos de Execução ---
+// --- Lógica do Modal de Tipos de Execução e Nível ---
 
 const detalhesExecucao = {
     "Compilada": {
@@ -142,7 +272,6 @@ const detalhesExecucao = {
     }
 };
 
-// Novo objeto para os detalhes dos Níveis de Linguagem
 const detalhesNivel = {
     "Nível alto": {
         descricao: "Linguagens mais próximas da comunicação humana. Elas abstraem detalhes complexos do hardware, tornando a programação mais rápida, fácil e menos propensa a erros."
@@ -163,6 +292,9 @@ const modalCloseBtn = document.getElementById('modal-close');
 
 document.querySelectorAll('.details-btn').forEach(button => {
     button.addEventListener('click', () => {
+        // Bloqueia o scroll do body ao abrir o modal de Nível/Execução também
+        document.body.classList.add('no-scroll');
+
         const tipo = button.getAttribute('data-tipo');
         const nivel = button.getAttribute('data-nivel');
 
@@ -191,6 +323,7 @@ document.querySelectorAll('.details-btn').forEach(button => {
 
 function fecharModal() {
     modalOverlay.style.display = 'none';
+    document.body.classList.remove('no-scroll'); // Libera o scroll
 }
 
 modalCloseBtn.addEventListener('click', fecharModal);
@@ -200,6 +333,7 @@ modalOverlay.addEventListener('click', (event) => {
         fecharModal();
     }
 });
+
 
 // --- Animação do Título Principal ---
 function animateTitleBinary(selector, finalColorClass = 'revealed', scrambleColorClass = 'scrambling') {
@@ -253,14 +387,24 @@ function toggleMenu() {
     mobileNav.classList.toggle('open');
     // Impede o scroll do body quando o menu está aberto
     if (mobileNav.classList.contains('open')) {
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
     } else {
-        // Restaura apenas a rolagem vertical, preservando o overflow-x: hidden do CSS.
-        document.body.style.overflowY = 'auto';
+        document.body.classList.remove('no-scroll');
     }
 }
 
 hamburgerBtn.addEventListener('click', toggleMenu);
+
+// Adiciona um evento para fechar o menu ao clicar fora dele
+document.addEventListener('click', (event) => {
+    const isClickInsideNav = mobileNav.contains(event.target);
+    const isClickOnHamburger = hamburgerBtn.contains(event.target);
+
+    // Se o menu estiver aberto e o clique não for no menu nem no botão, fecha o menu
+    if (mobileNav.classList.contains('open') && !isClickInsideNav && !isClickOnHamburger) {
+        toggleMenu();
+    }
+});
 
 // Adiciona rolagem suave com offset ao clicar em um link do menu
 navLinks.forEach(link => {
@@ -286,6 +430,7 @@ navLinks.forEach(link => {
         toggleMenu();
     });
 });
+
 
 // Inicia o carregamento dos dados assim que o script é lido
 inicializar();

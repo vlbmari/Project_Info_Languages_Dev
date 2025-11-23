@@ -12,12 +12,12 @@ tbody, tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption, footer,
 header, hgroup, menu, nav, output, ruby, section,
 summary, time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 /* Rolagem suave ao clicar em links âncora */
@@ -59,6 +59,11 @@ body {
     font-family: "Quicksand", sans-serif; /* Define a família da fonte */
 }
 
+/* CLASSE PARA BLOQUEAR O SCROLL DO BODY QUANDO O MODAL ESTIVER ABERTO */
+.no-scroll {
+    overflow: hidden !important;
+}
+
 header {
     position: relative; /* Necessário para o pseudo-elemento da borda */
     padding: 1rem; /* Espaçamento interno ajustado */
@@ -66,7 +71,7 @@ header {
     align-items: center; /* Alinha os itens verticalmente ao centro */
     justify-content: space-between; /* Título à esquerda, busca à direita */
     position: sticky; /* Mantém o cabeçalho fixo no topo ao rolar a página */
-    top: 0; /* Posição do topo quando sticky */
+
     /* Efeito Glassmorphism mais nítido */
     background: rgba(32, 33, 36, 0.85); /* Fundo mais opaco */
     backdrop-filter: blur(8px); /* Desfoque mais sutil */
@@ -122,7 +127,7 @@ header h1 {
     align-items: center;
     gap: 2rem; /* Espaço entre o título e o link de navegação */
     /* Adiciona uma largura mínima para evitar que a animação do título afete o layout.
-       Este valor reserva espaço suficiente para o título "Guia Dev" finalizado. */
+         Este valor reserva espaço suficiente para o título "Guia Dev" finalizado. */
     min-width: 280px;
 }
 
@@ -227,6 +232,13 @@ main {
 article {
     position: relative; /* Necessário para o pseudo-elemento da borda */
     overflow: hidden; /* Garante que a borda animada não vaze */
+    
+    /* MODIFICAÇÃO CHAVE PARA ALINHAMENTO DO BOTÃO */
+    display: flex;
+    flex-direction: column; /* Organiza os itens verticalmente */
+    height: 100%; /* Garante que o conteúdo estique o card para a altura máxima disponível */
+    /* FIM DA MODIFICAÇÃO CHAVE */
+    
     /* Efeito Glassmorphism */
     background: rgba(41, 42, 45, 0.75); /* Fundo semitransparente, um pouco mais opaco */
     backdrop-filter: blur(10px); /* Efeito de desfoque no fundo */
@@ -312,6 +324,10 @@ article a {
     font-weight: 500; /* Peso da fonte */
     display: inline-block; /* Para que o pseudo-elemento funcione corretamente */
     padding-bottom: 2px;
+    
+    /* Garante que o link não encolha/estique o container */
+    flex-shrink: 0; 
+    margin-bottom: 1rem; /* Espaço entre o link Saiba mais e o botão Curva */
 }
 
 /* Animação de sublinhado no hover */
@@ -366,6 +382,8 @@ article a:hover {
     justify-content: space-between;
     align-items: center;
     z-index: 10;
+    bottom: 0;
+    width: 100%;
 }
 
 /* Borda lilás com gradiente para o Footer (no topo) */
@@ -533,7 +551,7 @@ article a:hover::after {
     width: 280px; /* Largura fixa para o menu lateral */
     position: fixed;
     top: 0;
-    right: 0; /* Alinha o menu à direita */    
+    right: 0; /* Alinha o menu à direita */ 
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out, visibility 0.3s, border-left-color 0.3s ease-in-out;
     transform: translateX(100%);
     z-index: 15;
@@ -669,7 +687,7 @@ article a:hover::after {
 }
 
 /* --- Estilos do Botão de Detalhes --- */
-.details-btn {
+.details-btn, .nivel-details-btn {
     background-color: transparent;
     border: 1px solid var(--primary-color);
     color: var(--primary-color);
@@ -682,7 +700,7 @@ article a:hover::after {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.details-btn:hover {
+.details-btn:hover, .nivel-details-btn:hover {
     background-color: var(--primary-color);
     color: var(--bg-color);
 }
@@ -720,7 +738,7 @@ article a:hover::after {
     box-shadow: 0 0 20px rgba(var(--shadow-rgb), 0.25); /* Brilho correspondente à cor */
 }
 
-/* --- Estilos do Modal --- */
+/* --- Estilos do Modal (Padrão para os dois modais) --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -746,11 +764,28 @@ article a:hover::after {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Estilo para o NOVO modal de curva (maior e centralizado) */
+.modal-curva {
+    max-width: 700px; 
+    /* Centraliza o conteúdo (título, gráfico, descrição) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 .modal-content h3 {
     color: var(--primary-color);
     font-size: 1.5rem;
     margin-bottom: 1rem;
 }
+/* Título da curva dentro do modal */
+#curva-modal-title {
+    color: var(--seventh-color); /* Laranja Pastel */
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
 
 .modal-content p {
     line-height: 1.6;
@@ -766,4 +801,89 @@ article a:hover::after {
     color: var(--secondary-color);
     font-size: 2rem;
     cursor: pointer;
+}
+
+/* ==================================================================== */
+/* --- ESTILOS DO GRÁFICO DENTRO DO NOVO MODAL --- */
+/* ==================================================================== */
+
+/* Estilo do Botão "Ver Curva de Aprendizagem" */
+.btn-curva {
+    background-color: transparent;
+    border: 1px solid var(--quinary-color); /* Usa a cor verde-limão */
+    color: var(--quinary-color);
+    padding: 0.6rem 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    
+    /* Alinhamento no final do card flex */
+    margin-top: auto; 
+    margin-bottom: 0; 
+    
+    display: block; /* Ocupa a largura total do card */
+    width: 100%;
+    flex-shrink: 0; 
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-curva:hover {
+    background-color: var(--quinary-color);
+    color: var(--bg-color); /* Cor de fundo escura */
+    border-color: var(--quinary-color);
+}
+
+/* Estilo do Wrapper para o SVG no MODAL */
+.grafico-wrapper-modal {
+    position: relative;
+    height: 250px; /* Aumenta a altura para o modal */
+    width: 100%;
+    margin: 1.5rem 0;
+    padding: 0 5%;
+    
+    /* Adiciona uma borda sutil ao redor do gráfico */
+    border: 1px solid rgba(138, 180, 248, 0.2);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(138, 180, 248, 0.1);
+}
+
+.grafico-wrapper-modal svg {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove a borda do SVG interno, ela fica no wrapper */
+    border-left: 1px solid rgba(154, 160, 166, 0.3); /* Eixo Y */
+    border-bottom: 1px solid rgba(154, 160, 166, 0.3); /* Eixo X */
+    overflow: visible;
+}
+
+/* Rótulos dos Eixos (MANTIDOS E POSICIONADOS NO NOVO WRAPPER) */
+.eixo-y {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: rotate(-90deg) translate(-50%, 0);
+    font-size: 0.7em;
+    color: var(--tertiary-color);
+    white-space: nowrap;
+}
+
+.eixo-x {
+    position: absolute;
+    bottom: -25px;
+    right: 5%;
+    font-size: 0.7em;
+    color: var(--tertiary-color);
+    white-space: nowrap;
+}
+
+/* Descrição da Curva no modal */
+.curva-desc {
+    font-style: italic;
+    font-size: 0.85rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
