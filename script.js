@@ -214,6 +214,12 @@ function selecionarSugestao(nome) {
     document.getElementById("campo-busca").value = nome;
     document.getElementById("sugestoes-container").innerHTML = ""; // Limpa sugestões
     realizarBusca(); // Realiza a busca completa
+
+    // Rola a tela para a seção de linguagens após a seleção
+    const linguagensSection = document.getElementById('linguagens');
+    if (linguagensSection) {
+        linguagensSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function realizarBusca() {

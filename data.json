@@ -1,158 +1,584 @@
 [
-{
+  {
     "icon": "devicon-python-plain colored",
     "nome": "Python",
     "ano": 1991,
     "descricao": "Famosa por sua filosofia de simplicidade e legibilidade, é a porta de entrada para muitos programadores e uma potência em IA e análise de dados.",
     "curiosidade": "Seu nome não é uma referência à cobra, mas sim ao grupo de comédia britânico Monty Python's Flying Circus.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    "tags": ["Ciência de Dados", "Web", "Automação", "IA"],
+    "tags": [
+      "Ciência de Dados",
+      "Web",
+      "Automação",
+      "IA"
+    ],
     "link": "https://www.python.org/",
     "nivel": "Nível alto",
     "tipo_execucao": "Interpretada"
-},
-{
-    
+  },
+  {
     "nome": "JavaScript",
     "ano": 1995,
     "descricao": "A linguagem onipresente da web, responsável por dar vida e interatividade a virtualmente todos os sites. Roda em qualquer lugar, do navegador ao servidor.",
     "curiosidade": "Foi criada por Brendan Eich em apenas 10 dias enquanto trabalhava na Netscape.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    "tags": ["Web", "Mobile", "Desktop"],
+    "tags": [
+      "Web",
+      "Mobile",
+      "Desktop"
+    ],
     "link": "https://developer.mozilla.org/pt-BR/docs/Web/JavaScript",
     "nivel": "Nível alto",
     "tipo_execucao": "Interpretada (JIT)"
-},
-{
+  },
+  {
     "nome": "Java",
     "ano": 1995,
     "descricao": "Construída sobre o lema 'escreva uma vez, rode em qualquer lugar', sua robustez e portabilidade a tornaram a espinha dorsal de sistemas corporativos globais.",
     "curiosidade": "Seu nome original era 'Oak' (Carvalho), inspirado em uma árvore que ficava do lado de fora da janela de seu criador, James Gosling.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
-    "tags": ["Corporativo", "Mobile (Android)", "Web"],
+    "tags": [
+      "Corporativo",
+      "Mobile (Android)",
+      "Web"
+    ],
     "link": "https://docs.oracle.com/javase/10/docs/api/",
     "nivel": "Nível alto",
     "tipo_execucao": "Compilada para bytecode"
-},
-{
+  },
+  {
     "nome": "C#",
     "ano": 2000,
     "descricao": "A resposta moderna da Microsoft para o desenvolvimento robusto. É a força motriz por trás do ecossistema .NET e a linguagem preferida para jogos com Unity.",
     "curiosidade": "O nome original era 'Cool' (C-like Object Oriented Language), mas foi alterado por questões de marca registrada.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
-    "tags": ["Jogos (Unity)", "Web (.NET)", "Desktop"],
+    "tags": [
+      "Jogos (Unity)",
+      "Web (.NET)",
+      "Desktop"
+    ],
     "link": "https://docs.microsoft.com/pt-br/dotnet/csharp/",
     "nivel": "Nível alto",
     "tipo_execucao": "Compilada para IL"
-},
-{
+  },
+  {
     "nome": "C++",
     "ano": 1985,
     "descricao": "Uma evolução do C que oferece controle de hardware de baixo nível com abstrações de alto nível. É a escolha definitiva para aplicações onde cada nanossegundo conta.",
     "curiosidade": "O '++' no nome é uma referência ao operador de incremento da linguagem C, indicando que é uma 'evolução' do C.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
-    "tags": ["Jogos (Motores)", "Sistemas", "Performance"],
+    "tags": [
+      "Jogos (Motores)",
+      "Sistemas",
+      "Performance"
+    ],
     "link": "https://isocpp.org/",
     "nivel": "Nível intermediário",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "TypeScript",
     "ano": 2012,
     "descricao": "Um superconjunto de JavaScript que traz ordem ao caos, adicionando um sistema de tipos robusto para construir aplicações complexas com mais segurança e escalabilidade.",
     "curiosidade": "Seu principal arquiteto, Anders Hejlsberg, também foi o criador original da linguagem C# e do Delphi.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    "tags": ["Web", "Grandes Projetos"],
+    "tags": [
+      "Web",
+      "Grandes Projetos"
+    ],
     "link": "https://www.typescriptlang.org/",
     "nivel": "Nível alto",
     "tipo_execucao": "Traduzida (Transpilada)"
-},
-{
+  },
+  {
     "nome": "PHP",
     "ano": 1995,
     "descricao": "A linguagem que democratizou a web dinâmica. Simples e pragmática, ela alimenta uma vasta porção da internet, incluindo gigantes como o WordPress.",
     "curiosidade": "Originalmente significava 'Personal Home Page'. Hoje, é um acrônimo recursivo para 'PHP: Hypertext Preprocessor'.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
-    "tags": ["Web (Backend)", "CMS"],
+    "tags": [
+      "Web (Backend)",
+      "CMS"
+    ],
     "link": "https://www.php.net/",
     "nivel": "Nível alto",
     "tipo_execucao": "Interpretada"
-},
-{
+  },
+  {
     "nome": "Go",
     "ano": 2009,
     "descricao": "Projetada pelo Google para a era da nuvem, sua principal força é a simplicidade e o suporte nativo à concorrência, ideal para microserviços eficientes.",
     "curiosidade": "Foi criada por engenheiros do Google, incluindo Ken Thompson e Rob Pike, que também foram figuras centrais na criação do sistema operacional Unix e da linguagem C.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original-wordmark.svg",
-    "tags": ["Cloud", "Backend", "Concorrência"],
+    "tags": [
+      "Cloud",
+      "Backend",
+      "Concorrência"
+    ],
     "link": "https://go.dev/",
     "nivel": "Nível alto",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "C",
     "ano": 1972,
     "descricao": "A 'mãe' de muitas linguagens modernas. Oferece poder e controle quase absolutos sobre o hardware, sendo a base de sistemas operacionais e software embarcado.",
     "curiosidade": "É a 'mãe' de muitas linguagens modernas, como C++, C#, Java e Objective-C, e foi usada para escrever a maior parte do sistema operacional Unix.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-    "tags": ["Sistemas Operacionais", "Embarcados"],
+    "tags": [
+      "Sistemas Operacionais",
+      "Embarcados"
+    ],
     "link": "https://en.cppreference.com/w/c/language",
     "nivel": "Nível intermediário",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "Rust",
     "ano": 2010,
     "descricao": "Obcecada por segurança e performance. Garante segurança de memória sem um coletor de lixo, tornando-a ideal para sistemas onde falhas não são uma opção.",
     "curiosidade": "A comunidade Rust tem um mascote não oficial, um caranguejo amigável chamado Ferris.",
     "logo_url": "https://www.vectorlogo.zone/logos/rust-lang/rust-lang-icon.svg",
-    "tags": ["Sistemas", "Segurança", "WebAssembly"],
+    "tags": [
+      "Sistemas",
+      "Segurança",
+      "WebAssembly"
+    ],
     "link": "https://www.rust-lang.org/",
     "nivel": "Nível intermediário",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "Swift",
     "ano": 2014,
     "descricao": "A linguagem moderna, segura e expressiva da Apple. Projetada do zero para criar experiências ricas e fluidas em todo o ecossistema da maçã.",
     "curiosidade": "Foi desenvolvida em segredo pela Apple por 4 anos antes de ser anunciada ao público na WWDC 2014.",
     "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg",
-    "tags": ["Mobile (iOS)", "Desktop (macOS)"],
+    "tags": [
+      "Mobile (iOS)",
+      "Desktop (macOS)"
+    ],
     "link": "https://www.swift.org/",
     "nivel": "Nível intermediário",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "Assembly (ASM)",
     "ano": 1949,
     "descricao": "A forma mais pura de comunicação com o processador. Não é uma linguagem, mas uma representação legível do código de máquina, usada para controle e otimização extremos.",
     "curiosidade": "Não é uma única linguagem, mas um grupo de linguagens. Cada arquitetura de processador (como x86 ou ARM) tem seu próprio Assembly.",
     "logo_url": "https://www.svgrepo.com/show/373445/assembly.svg",
-    "tags": ["Hardware", "Otimização", "Drivers"],
+    "tags": [
+      "Hardware",
+      "Otimização",
+      "Drivers"
+    ],
     "link": "https://en.wikipedia.org/wiki/Assembly_language",
     "nivel": "Nível baixo",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "Fortran",
     "ano": 1957,
     "descricao": "A pioneira da computação científica. Nascida para traduzir fórmulas matemáticas em código, continua sendo uma ferramenta vital em supercomputadores e análises numéricas.",
     "curiosidade": "O nome é uma contração de 'Formula Translation'. É considerada a primeira linguagem de programação de alto nível a ser amplamente utilizada.",
     "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Fortran_logo.svg/1200px-Fortran_logo.svg.png",
-    "tags": ["Científico", "Computação Numérica"],
+    "tags": [
+      "Científico",
+      "Computação Numérica"
+    ],
     "link": "https://fortran-lang.org/",
     "nivel": "Nível baixo",
     "tipo_execucao": "Compilada"
-},
-{
+  },
+  {
     "nome": "COBOL",
     "ano": 1959,
     "descricao": "A linguagem dos negócios. Projetada para ser legível como o inglês, ela processa silenciosamente trilhões de dólares em transações diárias em sistemas financeiros globais.",
     "curiosidade": "Estima-se que mais de 220 bilhões de linhas de código COBOL ainda estejam em uso hoje, principalmente em sistemas bancários e governamentais.",
-    "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cobol-logo.svg/1280px-Cobol-logo.svg.png",
-    "tags": ["Financeiro", "Mainframe", "Sistemas Legados"],
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cobol/cobol-original.svg",
+    "tags": [
+      "Financeiro",
+      "Mainframe",
+      "Sistemas Legados"
+    ],
     "link": "https://www.ibm.com/br-pt/topics/cobol",
     "nivel": "Nível baixo",
     "tipo_execucao": "Compilada"
-}
+  },
+  {
+    "nome": "Kotlin",
+    "ano": 2011,
+    "descricao": "Uma linguagem de programação moderna, estaticamente tipada, usada primariamente para desenvolvimento Android nativo e aplicações de backend JVM.",
+    "curiosidade": "Kotlin é totalmente interoperável com Java, permitindo que projetos migrem gradualmente e usem bibliotecas Java existentes.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg",
+    "tags": [
+      "Mobile (Android)",
+      "Backend (JVM)",
+      "Linguagem Estática"
+    ],
+    "link": "https://kotlinlang.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada para Bytecode (JVM)"
+  },
+  {
+    "nome": "PostgreSQL",
+    "ano": 1996,
+    "descricao": "Um poderoso sistema de gerenciamento de banco de dados relacional de código aberto (ORDBMS), conhecido por sua robustez e conformidade com padrões.",
+    "curiosidade": "PostgreSQL é frequentemente chamado de 'o banco de dados de código aberto mais avançado do mundo'.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+    "tags": [
+      "Banco de Dados Relacional",
+      "ORDBMS",
+      "Código Aberto"
+    ],
+    "link": "https://www.postgresql.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução de consultas SQL via servidor"
+  },
+  {
+    "nome": "Docker",
+    "ano": 2013,
+    "descricao": "Uma plataforma para desenvolver, enviar e executar aplicações dentro de contêineres, facilitando a portabilidade e consistência em diferentes ambientes.",
+    "curiosidade": "O conceito de contêineres em Linux existe desde 2008 (LXC), mas o Docker popularizou e simplificou o gerenciamento e distribuição deles.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    "tags": [
+      "Contêinerização",
+      "DevOps",
+      "Infraestrutura"
+    ],
+    "link": "https://www.docker.com/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Virtualização em nível de SO"
+  },
+  {
+    "nome": "Kubernetes",
+    "ano": 2014,
+    "descricao": "Um sistema de código aberto para automatizar a implantação, escalonamento e gerenciamento de aplicações em contêineres.",
+    "curiosidade": "O nome Kubernetes (ou K8s) deriva de uma palavra grega que significa 'timoneiro' ou 'piloto'.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg",
+    "tags": [
+      "Orquestração",
+      "Cloud Computing",
+      "DevOps"
+    ],
+    "link": "https://kubernetes.io/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Gerenciamento distribuído de clusters"
+  },
+  {
+    "nome": "MongoDB",
+    "ano": 2009,
+    "descricao": "Um banco de dados NoSQL orientado a documentos, ideal para dados não estruturados ou semi-estruturados com alta escalabilidade.",
+    "curiosidade": "O nome 'MongoDB' é derivado de 'Humongous Database' (Banco de Dados Enorme).",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    "tags": [
+      "Banco de Dados NoSQL",
+      "Documentos",
+      "Escalabilidade Horizontal"
+    ],
+    "link": "https://www.mongodb.com/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução de consultas (MQL)"
+  },
+  {
+    "nome": "Svelte",
+    "ano": 2016,
+    "descricao": "Um framework/compilador que move o trabalho de framework para a etapa de compilação, resultando em código de aplicação leve e rápido.",
+    "curiosidade": "Ao contrário de React ou Vue, Svelte não é um framework que é carregado no navegador; ele compila o código em JavaScript vanilla performático.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg",
+    "tags": [
+      "Frontend",
+      "Compilador",
+      "Web Components"
+    ],
+    "link": "https://svelte.dev/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada para JavaScript nativo"
+  },
+  {
+    "nome": "Vue.js",
+    "ano": 2014,
+    "descricao": "Um framework progressivo de código aberto para construção de interfaces de usuário reativas, conhecido por sua facilidade de aprendizado e flexibilidade.",
+    "curiosidade": "Vue.js foi criado por Evan You após ele trabalhar no AngularJS do Google, buscando criar algo mais leve e fácil de usar.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg",
+    "tags": [
+      "Frontend",
+      "MVVM",
+      "Componentes"
+    ],
+    "link": "https://vuejs.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Interpretada no navegador"
+  },
+  {
+    "nome": "Angular",
+    "ano": 2016,
+    "descricao": "Um framework de desenvolvimento de aplicações front-end mantido pelo Google, focado em criar Single Page Applications (SPAs) robustas e escaláveis.",
+    "curiosidade": "O Angular (versão 2+) é um reescrito completo do AngularJS (a versão original, lançada em 2010).",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+    "tags": [
+      "Frontend",
+      "SPA",
+      "Estruturado (Google)"
+    ],
+    "link": "https://angular.io/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Interpretada no navegador"
+  },
+  {
+    "nome": "Next.js",
+    "ano": 2016,
+    "descricao": "Um framework React full-stack que permite Server-Side Rendering (SSR) e Static Site Generation (SSG), melhorando SEO e performance.",
+    "curiosidade": "Next.js foi originalmente desenvolvido pela Vercel e é uma das ferramentas preferidas para desenvolvimento de aplicações web modernas escaláveis.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+    "tags": [
+      "Full-stack",
+      "SSR/SSG",
+      "Framework React"
+    ],
+    "link": "https://nextjs.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Híbrida (Server-side e Client-side)"
+  },
+  {
+    "nome": "Dart",
+    "ano": 2011,
+    "descricao": "Uma linguagem de programação otimizada para o cliente (mobile, web, desktop) desenvolvida pelo Google, sendo a base do framework Flutter.",
+    "curiosidade": "Dart foi inicialmente desenvolvido como um potencial substituto para JavaScript nos navegadores, embora hoje seja mais famoso pelo Flutter.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg",
+    "tags": [
+      "Mobile (Flutter)",
+      "Linguagem de Cliente",
+      "JIT/AOT Compilada"
+    ],
+    "link": "https://dart.dev/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada Just-in-Time (JIT) ou Ahead-of-Time (AOT)"
+  },
+  {
+    "nome": "Elixir",
+    "ano": 2011,
+    "descricao": "Uma linguagem de programação funcional e dinâmica construída sobre a Erlang VM (BEAM), excelente para sistemas distribuídos e concorrência.",
+    "curiosidade": "O framework Phoenix, construído em Elixir, é famoso por sua alta performance e baixa latência, comparável a linguagens compiladas.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/elixir/elixir-original.svg",
+    "tags": [
+      "Backend",
+      "Concorrência",
+      "Programação Funcional"
+    ],
+    "link": "https://elixir-lang.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada para bytecode (BEAM VM)"
+  },
+  {
+    "nome": "Erlang",
+    "ano": 1986,
+    "descricao": "Uma linguagem funcional projetada pela Ericsson para construir sistemas altamente concorrentes e tolerantes a falhas, com foco em telecomunicações.",
+    "curiosidade": "Erlang foi nomeada em homenagem ao matemático A.K. Erlang, e também é uma abreviação de 'Ericsson Language'.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/erlang/erlang-original.svg",
+    "tags": [
+      "Telecomunicações",
+      "Concorrência (OTP)",
+      "Tolerância a Falhas"
+    ],
+    "link": "https://www.erlang.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada para bytecode (BEAM VM)"
+  },
+  {
+    "nome": "Lua",
+    "ano": 1993,
+    "descricao": "Uma linguagem de script leve, poderosa e incorporável, frequentemente usada para extensibilidade, jogos (como Roblox) e dispositivos embarcados.",
+    "curiosidade": "Lua foi desenvolvida e é mantida pela PUC-Rio, no Brasil. É uma das linguagens mais bem-sucedidas desenvolvidas fora dos EUA.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg",
+    "tags": [
+      "Scripting",
+      "Jogos",
+      "Embarcados"
+    ],
+    "link": "https://www.lua.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Interpretada/Compilada Just-in-Time"
+  },
+  {
+    "nome": "Scala",
+    "ano": 2004,
+    "descricao": "Uma linguagem de programação que combina recursos de linguagens orientadas a objetos e funcionais, executada na JVM.",
+    "curiosidade": "O nome Scala é uma aglutinação de 'Scalable Language', refletindo seu design para crescer com a demanda do usuário.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg",
+    "tags": [
+      "Backend (JVM)",
+      "Big Data (Spark)",
+      "Programação Funcional"
+    ],
+    "link": "https://www.scala-lang.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada para Bytecode (JVM)"
+  },
+  {
+    "nome": "Haskell",
+    "ano": 1990,
+    "descricao": "Uma linguagem de programação puramente funcional e estaticamente tipada, conhecida por sua segurança e rigor matemático.",
+    "curiosidade": "Haskell é frequentemente usada em ambientes acadêmicos e por aqueles que buscam a garantia de que o código está 'correto' devido aos seus fortes sistemas de tipos.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/haskell/haskell-original.svg",
+    "tags": [
+      "Funcional Pura",
+      "Acadêmica",
+      "Compilada"
+    ],
+    "link": "https://www.haskell.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada"
+  },
+  {
+    "nome": "Julia",
+    "ano": 2012,
+    "descricao": "Uma linguagem de alto desempenho projetada para computação científica, aprendizado de máquina e análise de dados.",
+    "curiosidade": "Julia resolve o problema de 'two-language problem' ao oferecer a facilidade de uso de Python com a velocidade de C/Fortran.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/julia/julia-original.svg",
+    "tags": [
+      "Computação Científica",
+      "Data Science",
+      "Alto Desempenho"
+    ],
+    "link": "https://julialang.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Compilada Just-in-Time (JIT)"
+  },
+  {
+    "nome": "Terraform",
+    "ano": 2014,
+    "descricao": "Uma ferramenta de Infraestrutura como Código (IaC) que permite definir e provisionar infraestrutura em vários provedores de nuvem usando arquivos de configuração.",
+    "curiosidade": "O Terraform usa a HashiCorp Configuration Language (HCL), que é projetada para ser legível por humanos e amigável.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg",
+    "tags": [
+      "Infraestrutura como Código",
+      "Multi-Cloud",
+      "DevOps"
+    ],
+    "link": "https://www.terraform.io/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução via CLI"
+  },
+  {
+    "nome": "TensorFlow",
+    "ano": 2015,
+    "descricao": "Uma biblioteca de software livre para aprendizado de máquina e inteligência artificial, desenvolvida pelo Google, focada em redes neurais complexas.",
+    "curiosidade": "TensorFlow é amplamente utilizado em produção devido à sua capacidade de ser implantado em vários dispositivos, desde servidores até smartphones.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    "tags": [
+      "Inteligência Artificial",
+      "Machine Learning",
+      "Redes Neurais"
+    ],
+    "link": "https://www.tensorflow.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução de grafos computacionais"
+  },
+  {
+    "nome": "PyTorch",
+    "ano": 2016,
+    "descricao": "Uma biblioteca de aprendizado de máquina de código aberto, notável por seu uso de grafos computacionais dinâmicos, favorecendo pesquisa e prototipagem.",
+    "curiosidade": "PyTorch é mantido pelo laboratório de pesquisa de IA do Facebook (Meta AI) e é preferido na pesquisa acadêmica de ML devido à sua flexibilidade.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
+    "tags": [
+      "Deep Learning",
+      "Pesquisa de IA",
+      "Grafos Dinâmicos"
+    ],
+    "link": "https://pytorch.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução de tensores via CPU/GPU"
+  },
+  {
+    "nome": "Redis",
+    "ano": 2009,
+    "descricao": "Um armazenamento de estrutura de dados em memória (in-memory data store) usado como cache, broker de mensagens e banco de dados primário.",
+    "curiosidade": "Redis é uma abreviação de 'REmote DIctionary Server'.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
+    "tags": [
+      "Cache",
+      "Banco de Dados NoSQL",
+      "In-Memory"
+    ],
+    "link": "https://redis.io/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução em memória RAM"
+  },
+  {
+    "nome": "React Native",
+    "ano": 2015,
+    "descricao": "Um framework que permite criar aplicações móveis nativas para iOS e Android usando o paradigma de componentes do React.",
+    "curiosidade": "Apesar de usar JavaScript, o React Native renderiza componentes nativos em vez de WebViews, garantindo uma experiência nativa.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    "tags": [
+      "Mobile Cross-Platform",
+      "Framework (Meta)",
+      "Nativo"
+    ],
+    "link": "https://reactnative.dev/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Bridge para código nativo"
+  },
+  {
+    "nome": "WebAssembly",
+    "ano": 2017,
+    "descricao": "Um formato de instrução binária de baixo nível para uma máquina virtual baseada em pilha, projetada para ser executada em navegadores web e em outros ambientes.",
+    "curiosidade": "O Wasm permite que código escrito em linguagens como C++ ou Rust seja compilado para rodar na web com desempenho quase nativo.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wasm/wasm-original.svg",
+    "tags": [
+      "Web (Desempenho)",
+      "Compilação de Baixo Nível",
+      "Máquina Virtual"
+    ],
+    "link": "https://webassembly.org/",
+    "nivel": "Nível baixo",
+    "tipo_execucao": "Execução em runtime (no navegador ou fora dele)"
+  },
+  {
+    "nome": "Apache Kafka",
+    "ano": 2011,
+    "descricao": "Uma plataforma de streaming de eventos distribuída que permite publicar, assinar, armazenar e processar fluxos de registros em tempo real.",
+    "curiosidade": "Kafka foi originalmente desenvolvido no LinkedIn para lidar com um alto volume de dados de atividade do usuário.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg",
+    "tags": [
+      "Streaming de Dados",
+      "Mensageria",
+      "Sistemas Distribuídos"
+    ],
+    "link": "https://kafka.apache.org/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Distribuição de logs por broker"
+  },
+  {
+    "nome": "AWS Lambda",
+    "ano": 2014,
+    "descricao": "Um serviço de computação serverless da Amazon Web Services (AWS) que executa código em resposta a eventos sem a necessidade de provisionar ou gerenciar servidores.",
+    "curiosidade": "O modelo de pagamento do Lambda é baseado na duração da execução e na memória alocada, popularizando o conceito 'pague pelo uso'.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg",
+    "tags": [
+      "Cloud (Serverless)",
+      "FaaS",
+      "AWS"
+    ],
+    "link": "https://aws.amazon.com/lambda/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Execução de Função (FaaS)"
+  },
+  {
+    "nome": "Microsoft Azure",
+    "ano": 2010,
+    "descricao": "Uma plataforma de computação em nuvem que oferece uma ampla gama de serviços, incluindo infraestrutura, plataforma e software como serviço (IaaS, PaaS, SaaS).",
+    "curiosidade": "Inicialmente, o Azure era conhecido como 'Windows Azure' e foi projetado principalmente para hospedar aplicações .NET.",
+    "logo_url": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg",
+    "tags": [
+      "Cloud Computing",
+      "Hospedagem",
+      "IaaS/PaaS/SaaS"
+    ],
+    "link": "https://azure.microsoft.com/",
+    "nivel": "Nível alto",
+    "tipo_execucao": "Serviços Distribuídos"
+  }
 ]
